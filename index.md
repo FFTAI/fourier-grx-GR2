@@ -7,17 +7,6 @@ has_children: true
 
 # 欢迎来到 Fourier-GRX SDK 开发文档
 
-{: .no_toc }
-
-<details open markdown="block">
-  <summary>
-    目录
-  </summary>
-  {: .text-delta }
-1. TOC
-{:toc}
-</details>
-
 Fourier-GRX SDK 是傅利叶智能提供的一个软件开发工具包，
 提供了一套API用于安装、配置、控制傅利叶智能的通用机器人产品的控制程序。
 
