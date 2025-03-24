@@ -8,16 +8,24 @@ docs:
     nav_order: 2
     has_children: true
     children:
-      - title: User 接口
+      - title: 示例代码 User 接口
         url: /docs/examples/user
         nav_order: 2.1
-      - title: Developer 接口
+      - title: 示例代码 Developer 接口
         url: /docs/examples/developer
         nav_order: 2.2
 
   - title: 参考指南
     url: /docs/reference
     nav_order: 3
+    has_children: true
+    children:
+      - title: 参考指南 User 接口
+        url: /docs/reference/user
+        nav_order: 3.1
+      - title: 参考指南 Developer 接口
+        url: /docs/reference/developer
+        nav_order: 3.2
 
   - title: 常见问题
     url: /docs/faq
