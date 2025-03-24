@@ -11,6 +11,9 @@ logo_alt: "Fourier Intelligence"
 
 search_enabled: true
 collapse_navigation: true
+navigation_fixed: true
+navigation_sticky: true
+navigation_fold: true
 
 defaults:
   - scope:
