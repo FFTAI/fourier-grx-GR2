@@ -7,11 +7,15 @@ has_children: true
 
 # 欢迎来到 Fourier-GRX SDK 开发文档
 
+## 介绍
+
 Fourier-GRX SDK 是傅利叶智能提供的一个软件开发工具包，
 提供了一套API用于安装、配置、控制傅利叶智能的通用机器人产品的控制程序。
 
 该SDK设计简洁易用，提供高级接口来控制机器人运动并读取传感器数据。
 SDK 目前主要支持 Python 语言二次开发使用。
+
+## 开始使用
 
 [快速开始](/docs/quickstart.md) 是开始使用Fourier-GRX SDK库的推荐方式。
 这份分步指南将帮助您安装所需库文件并运行简单程序来控制机器人。
