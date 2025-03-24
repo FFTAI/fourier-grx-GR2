@@ -24,15 +24,15 @@ SDK 目前主要支持 Python 语言二次开发使用。
 
 [参考指南](/docs/reference.md) 包含了 SDK 库的详细 API 文档，可作为您开发应用程序的参考文档。
 
+[常见问题](/docs/faq.md) 包含了一些常见问题的解答，可帮助您解决一些常见问题。
+
 ## 支持平台与版本
 
-Fourier-GRX SDK 库支持以下平台：
-
-- Ubuntu 22.04
-
-Fourier-GRX SDK 库支持以下 Python 版本:
-
-- Python 3.11
+| 系统环境             | Python 环境   | 已测试 | 测试通过 |
+|------------------|-------------|-----|------|
+| Ubuntu 22.04 LTS | Python 3.11 | ✅   | ✅    |
+| Windows          | Python 3.11 |     |      |
+| MacOS            | Python 3.11 |     |      |
 
 ## 更新日志
 
