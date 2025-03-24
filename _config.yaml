@@ -1,17 +1,23 @@
 title: 开发文档
 description: Fourier-GRX SDK
-remote_theme: pmarsceill/just-the-docs
+remote_theme: just-the-docs/just-the-docs
+
 plugins:
   - jekyll-relative-links
-  - jekyll-default-layout
-  - jekyll-readme-index
   - jekyll-remote-theme
 
-# logo 图片配置
-logo: "assets/images/logo.jpeg"         # 图片路径
-logo_alt: "Fourier Intelligence"        # 图片的替代文本（SEO 优化）
-logo_footer: "assets/images/logo.jpeg"  # 页脚 Logo（可选）
+logo: "assets/images/logo.png"
+logo_alt: "Fourier Intelligence"
 
-# 导航栏配置
-collapse_navigation: false # 启用展开当前活动的父菜单
-nav_exclude: false # 控制菜单展开深度
+search_enabled: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# 可选扩展配置
+aux_links:
+  "GitHub 仓库":
+    - "//github.com/FFTAI/Wiki-GRx-Deploy"
