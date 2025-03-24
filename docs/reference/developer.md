@@ -9,6 +9,8 @@ parent: 参考指南
 
 ## Fourier-GRX 接口协议 [developer 接口]
 
+developer 接口是针对开发者底层开发提供的二次开发接口。需要在 python 环境中安装 fourier_core 和 fourier_grx 库后，直接使用库函数进行开发调用。
+
 ### 状态字典（state dict）
 
 Fourier-GRX developer 接口使用状态字典（state dict）返回机器人当前的状态信息，状态字典的 key 和 value 如下：
