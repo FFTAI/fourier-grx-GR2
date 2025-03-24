@@ -17,20 +17,20 @@ SDK 目前主要支持 Python 语言二次开发使用。
 
 ## 开始使用
 
-[快速开始](/docs/quickstart.md) 是开始使用Fourier-GRX SDK库的推荐方式。
+[快速开始](/docs/quickstart.md) 是开始使用 Fourier-GRX SDK 库的推荐方式。
 这份分步指南将帮助您安装所需库文件并运行简单程序来控制机器人。
 
-[示例代码](/docs/examples.md) 演示了SDK库的使用方法，可作为您开发应用程序的参考程序。
+[示例代码](/docs/examples.md) 演示了 SDK 库的使用方法，可作为您开发应用程序的参考程序。
 
-[参考指南](/docs/reference.md) 包含了SDK库的详细API文档，可作为您开发应用程序的参考文档。
+[参考指南](/docs/reference.md) 包含了 SDK 库的详细 API 文档，可作为您开发应用程序的参考文档。
 
 ## 支持平台与版本
 
-Fourier-GRX SDK库支持以下平台：
+Fourier-GRX SDK 库支持以下平台：
 
 - Ubuntu 22.04
 
-Fourier-GRX SDK 支持以下Python版本:
+Fourier-GRX SDK 库支持以下 Python 版本:
 
 - Python 3.11
 
