@@ -5,6 +5,13 @@ docs:
   - title: 示例代码
     url: /docs/examples
     nav_order: 2
+    children:
+      - title: 示例代码 user
+        url: /docs/examples/user
+        nav_order: 1
+      - title: 示例代码 admin
+        url: /docs/examples/admin
+        nav_order: 2
   - title: 参考指南
     url: /docs/reference
     nav_order: 3
