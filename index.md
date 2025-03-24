@@ -34,6 +34,10 @@ Fourier-GRX SDK 库支持以下 Python 版本:
 
 - Python 3.11
 
+## 更新日志
+
+请查看 [更新日志](/change-log.md) 以获取最新版本的更新内容。
+
 ## 贡献
 
-请阅读我们的[贡献指南](/CONTRIBUTING.md)
+请阅读我们的[贡献指南](/contributing.md)以获取更多信息。
