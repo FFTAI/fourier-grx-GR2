@@ -75,12 +75,11 @@ key 说明列表：
 
 key 说明列表：
 
-| key                        | 说明       | 数据类型 | 具体描述                      |
-|----------------------------|----------|------|---------------------------|
-| `robot_error_codes`        | 机器人错误码   | int  | 机器人错误码，0: 无错误，其他: 具体错误码   |
-| `robot_battery_percentage` | 机器人电量百分比 | int  | 机器人电量百分比，0-100            |
-| `robot_charging_level`     | 机器人电量等级  | int  | 1为低电量红色 2为中等电量黄色 3为较多电量绿色 |
-| `robot_charging_state`     | 机器人充电状态  | int  | 0: 未充电，1: 正在充电            |
+| key                    | 说明     | 数据类型   | 具体描述                    |
+|------------------------|--------|--------|-------------------------|
+| `fourier_core_version` | 核心库版本  | string | 核心库版本号                  |
+| `fourier_grx_version`  | GRX库版本 | string | GRX库版本号                 |
+| `robot_error_codes`    | 机器人错误码 | int    | 机器人错误码，0: 无错误，其他: 具体错误码 |
 
 ### 指令信息
 
@@ -102,28 +101,56 @@ key 说明列表：
 
 #### task/client 接口协议 (指令信息)
 
+任务指令发送接口如下，发送指令时要求按照以下流程执行：
+
+- 任务指令发送：
+    1. 发送 robot_task_command 和 robot_task_command_data，任务相关信息
+    2. 发送 flag_task_command_update 指令更新标志位，确认更新任务指令
+- 模块指令发送：
+    1. 发送 robot_component_command 和 robot_component_command_data，模块相关信息
+    2. 发送 flag_component_command_update 指令更新标志位，确认更新模块指令
+
 key 说明列表：
 
-| key                        | 说明         | 数据类型 | 具体描述            |
-|----------------------------|------------|------|-----------------|
-| `flag_task_command_update` | 任务指令请求更新标志 | bool | 0: 不更新，1: 更新    |
-| `robot_task_command`       | 任务指令       | int  | 机器人任务指令，具体指令见下表 |
+| key                             | 说明         | 数据类型 | 具体描述            |
+|---------------------------------|------------|------|-----------------|
+| `flag_task_command_update`      | 任务指令请求更新标志 | bool | 0: 不更新，1: 更新    |
+| `robot_task_command`            | 任务指令       | int  | 机器人任务指令，具体指令见下表 |
+| `robot_task_command_data`       | 任务指令数据     | dict | 机器人任务指令数据       |
+| `flag_component_command_update` | 模块指令请求更新标志 | bool | 0: 不更新，1: 更新    |
+| `robot_component_command`       | 模块指令       | int  | 机器人模块指令，具体指令见下表 |
+| `robot_component_command_data`  | 模块指令数据     | dict | 机器人模块指令数据       |
 
 机器人任务指令列表：
 
 - 任务指令通过 fourier_grx.TaskCommand 枚举类定义，具体定义如下：
 - 具体任务值可能会根据机器人的不同，或 `fourier-grx` 版本的不同而有所变化，具体值以实际为准。
 
-| 任务指令             | 任务值  | 任务描述                            |
-|------------------|------|---------------------------------|
-| TASK_SERVO_OFF   | 36   | 机器人全关节下电失能                      |
-| TASK_SERVO_ON    | 35   | 机器人全关节上电使能                      |
-| TASK_CLEAR_FAULT | 34   | 清除机器人全关节报警                      |
-| TASK_SET_HOME    | 3000 | 设置机器人全关节零位位置为当前位置               |
-| TASK_TEST_JOINT  | 3003 | 机器人关节运动功能测试，用于检测机器人关节是否能够正常运动   |
-| TASK_READY_STATE | 3011 | 机器人运行到 **准备状态**，为微曲膝关节的站立姿态     |
-| TASK_RL_WALK     | 3530 | 机器人运动到 **行走状态**，可以用手柄控制机器人行走    |
-| TASK_RL_WALK_RUN | 3542 | 机器人运动到 **跑步状态**，可以用手柄控制机器人行走/跑步 |
+| 任务指令             | 任务值  | 适用机型                 | 任务描述                            |
+|------------------|------|----------------------|---------------------------------|
+| TASK_SERVO_OFF   | 36   | All                  | 机器人全关节下电失能                      |
+| TASK_SERVO_ON    | 35   | All                  | 机器人全关节上电使能                      |
+| TASK_CLEAR_FAULT | 34   | All                  | 清除机器人全关节报警                      |
+| TASK_SET_HOME    | 3000 | All                  | 设置机器人全关节零位位置为当前位置               |
+| TASK_TEST_JOINT  | 3003 | All                  | 机器人关节运动功能测试，用于检测机器人关节是否能够正常运动   |
+| TASK_READY_STATE | 3011 | All                  | 机器人运行到 **准备状态**，为微曲膝关节的站立姿态     |
+| TASK_WALK        | 3530 | All                  | 机器人运动到 **行走状态**，可以用手柄控制机器人行走    |
+| TASK_RUN         | 3542 | GRMini1T1, GRMini1T2 | 机器人运动到 **跑步状态**，可以用手柄控制机器人行走/跑步 |
+
+机器人模块指令列表：
+
+- 模块任务可以理解为任务下面的子任务模块，但是由于子任务之间可能存在 互斥、组合 的关系，因此，我们并不称其为子任务，而是以模块的形式进行管理。
+- 相互互斥的几个模块其中一个被调用时，另一个在程序中自动被 挂起。（由控制程序自动管理）
+- 相互组合的模块，对方的调用和切换不会互相影响。
+- 模块的运行管理全在控制程序中完成，上层无需关心模块的吊起切换过程是否有风险。
+
+| 任务指令        | 模块指令                        | 模块值   | 模块描述    |
+|-------------|-----------------------------|-------|---------|
+| TASK_WALK   | COMPONENT_NATURAL_WAVE      |       | 自然摆臂    |
+| TASK_WALK   | COMPONENT_WAVE_LEFT_HAND    |       | 左手打招呼   |
+| TASK_WALK   | COMPONENT_WAVE_RIGHT_HAND   |       | 右手打招呼   |
+| =========== | =========================== | ===== | ======= |
+| TASK_RUN    | COMPONENT_NATURAL_WAVE      |       | 自然摆臂    |
 
 #### grx/client 接口协议 (指令信息)
 
@@ -134,21 +161,21 @@ key 说明列表：
 - 在需要使用到对应虚拟设备时，需要在主程序启动时调用的 `config_xxx.yaml` 文件中
   设置 `peripheral/use_virtual_joystick` 或 `peripheral/use_virtual_teleoperation` 为 True。
 
-| key                                       | 说明             | 数据类型                                               | 具体描述             |
-|-------------------------------------------|----------------|----------------------------------------------------|------------------|
-| `virtual_joystick_button_up`              | 虚拟手柄上按钮状态      | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_down`            | 虚拟手柄下按钮状态      | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_left`            | 虚拟手柄左按钮状态      | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_right`           | 虚拟手柄右按钮状态      | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_l1`              | 虚拟手柄 L1 按钮状态   | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_l2`              | 虚拟手柄 L2 按钮状态   | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_r1`              | 虚拟手柄 R1 按钮状态   | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_button_r2`              | 虚拟手柄 R2 按钮状态   | int                                                | 0: 未按下，1: 按下     |
-| `virtual_joystick_axis_left`              | 虚拟手柄左摇杆状态      | array(int, int)                                    | 摇杆状态值范围为 [-1, 1] |
-| `virtual_joystick_axis_right`             | 虚拟手柄右摇杆状态      | array(int, int)                                    | 摇杆状态值范围为 [-1, 1] |
-| ==========                                | ==========     | ==========                                         | ==========       |
-| `virtual_teleoperation_left_handle_pose`  | 虚拟遥操作手柄左手柄姿态   | array(float, float, float,float,float,float,float) |                  |
-| `virtual_teleoperation_right_handle_pose` | 虚拟遥操作手柄右手柄姿态   | array(float, float, float,float,float,float,float) |                  |
-| `virtual_teleoperation_button_left`       | 虚拟遥操作手柄左手柄按钮状态 | int                                                | 0: 未按下，1: 按下     |
-| `virtual_teleoperation_button_right`      | 虚拟遥操作手柄右手柄按钮状态 | int                                                | 0: 未按下，1: 按下     |
+| key                                       | 说明                 | 数据类型                                               | 具体描述              |
+|-------------------------------------------|--------------------|----------------------------------------------------|-------------------|
+| `virtual_joystick_button_up`              | 虚拟手柄上按钮状态          | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_down`            | 虚拟手柄下按钮状态          | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_left`            | 虚拟手柄左按钮状态          | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_right`           | 虚拟手柄右按钮状态          | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_l1`              | 虚拟手柄 L1 按钮状态       | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_l2`              | 虚拟手柄 L2 按钮状态       | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_r1`              | 虚拟手柄 R1 按钮状态       | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_button_r2`              | 虚拟手柄 R2 按钮状态       | int                                                | 0: 未按下，1: 按下      |
+| `virtual_joystick_axis_left`              | 虚拟手柄左摇杆状态          | array(int, int)                                    | 摇杆状态值范围为 [-1, 1]  |
+| `virtual_joystick_axis_right`             | 虚拟手柄右摇杆状态          | array(int, int)                                    | 摇杆状态值范围为 [-1, 1]  |
+| ========================================= | ================== | ================================================== | ================= |
+| `virtual_teleoperation_left_handle_pose`  | 虚拟遥操作手柄左手柄姿态       | array(float, float, float,float,float,float,float) |                   |
+| `virtual_teleoperation_right_handle_pose` | 虚拟遥操作手柄右手柄姿态       | array(float, float, float,float,float,float,float) |                   |
+| `virtual_teleoperation_button_left`       | 虚拟遥操作手柄左手柄按钮状态     | int                                                | 0: 未按下，1: 按下      |
+| `virtual_teleoperation_button_right`      | 虚拟遥操作手柄右手柄按钮状态     | int                                                | 0: 未按下，1: 按下      |
 
