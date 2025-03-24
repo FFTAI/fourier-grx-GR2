@@ -6,7 +6,7 @@ plugins:
   - jekyll-relative-links
   - jekyll-remote-theme
 
-logo: "assets/images/logo.png"
+logo: "assets/images/logo.jpeg"
 logo_alt: "Fourier Intelligence"
 
 search_enabled: true
