@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 开发文档中心
+title: Fourier-GRX SDK
 nav_order: 1
 has_children: true
 ---
 
-# 欢迎来到 {Fourier-GRX} 开发文档
+# 欢迎来到 Fourier-GRX SDK 开发文档
 
 {: .no_toc }
 
