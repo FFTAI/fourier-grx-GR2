@@ -2,7 +2,12 @@ title: 开发文档
 description: 项目开发文档中心
 remote_theme: pmarsceill/just-the-docs
 plugins:
-#  - jekyll-relative-links
-#  - jekyll-default-layout
-#  - jekyll-readme-index
+  - jekyll-relative-links
+  - jekyll-default-layout
+  - jekyll-readme-index
   - jekyll-remote-theme
+
+# logo 图片配置
+logo: "assets/images/logo.jpeg"         # 图片路径
+logo_alt: "Fourier Intelligence"        # 图片的替代文本（SEO 优化）
+logo_footer: "assets/images/logo.jpeg"  # 页脚 Logo（可选）

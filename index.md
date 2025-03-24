@@ -5,7 +5,7 @@ nav_order: 1
 has_children: true
 ---
 
-# 欢迎来到 {项目名称} 开发文档
+# 欢迎来到 {Fourier-GRX} 开发文档
 
 {: .no_toc }
 
