@@ -5,6 +5,7 @@ docs:
   - title: 示例代码
     url: /docs/examples
     nav_order: 2
+    has_children: true
     children:
       - title: 示例代码 user
         url: /docs/examples/user
