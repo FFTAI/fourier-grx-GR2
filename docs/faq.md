@@ -8,7 +8,7 @@ nav_order: 4
 
 ## 机器人 self-check 失败，提示无法访问指定 ip 的执行器：
 
-- ![img.png](picture/self_check_error.png)
+- ![self_check_error.png](/assets/images/self_check_error.png)
 - 检查机器人的执行器是否上电，是否闪烁紫色呼吸灯。
 - 检查机器人的有线网口是否连接到有线网络，并且系统已正确配置为静态 IP 模式。
 - 检查机器人是否存在线路连线问题。
