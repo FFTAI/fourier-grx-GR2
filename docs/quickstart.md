@@ -35,7 +35,7 @@ nav_order: 1
 
 ### 程序启动
 
-机器人提供了 `fourier-grx start` 命令用于机器人控制程序启动。
+我们默认已经为机器人安装好了 `fourier-grx` 工具。该提供了 `fourier-grx start` 命令用于机器人控制程序启动。
 
 ```bash
 # 在机器人主控电脑上：
@@ -50,7 +50,7 @@ fourier-grx start
 
 ### 二次开发环境配置
 
-机器人提供了 `fourier-grx setup_conda` 命令用于一键配置 conda 开发环境。
+除了启动控制程序的功能，`fourier-grx` 工具还提供了 `fourier-grx setup_conda` 命令用于一键配置 conda 开发环境用于机器人二次开发。
 
 ```bash
 # 在机器人主控电脑上：
@@ -64,7 +64,7 @@ conda activate fourier-grx
 
 ### 示例程序运行
 
-可以通过 git 同步机器人的二次开发接口示例程序，同步命令为：
+当我们安装好 conda 开发环境后，可以通过 git 同步机器人的二次开发接口示例程序。
 
 ```bash
 git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
@@ -72,3 +72,20 @@ git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
 
 建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/wiki-grx-mini` 进入该目录查看。
 
+然后，我们可以通过以下命令启动示例程序：
+
+```bash
+# 在机器人主控电脑上
+# 1. 启动 fourier-grx 主程序
+conda activate fourier-grx  # 激活 conda 环境
+python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml  # 启动 fourier-grx 主程序
+
+# 在机器人主控电脑上或与机器人同局域网内的任意一台电脑上
+# 2. 启动 user 接口示例
+conda activate fourier-grx  # 激活 conda 环境
+python $HOME/wiki-grx-mini/user/demo_{具体示例}.py  # 启动示例
+```
+
+程序启动后，可以通过手柄控制机器人完成相应的任务。
+
+至此，我们已经完成了机器人的快速开始。接下来，我们可以通过示例程序来了解机器人的各项功能。🎆🎆🎆
