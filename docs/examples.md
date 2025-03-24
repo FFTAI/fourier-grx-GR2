@@ -51,7 +51,7 @@ python $HOME/wiki-grx-mini/user/demo_{具体示例}.py  # 启动示例
 如果是在远程电脑上控制机器人，建议使用 Terminal 开多窗口，方便查看机器人状态信息，确保任务有正确被执行。
 如下图所示：
 
-![img.png](picture/img.png)
+![example_user_terminal.png](/assets/images/example_user_terminal.png)
 
 ## developer
 
