@@ -11,19 +11,57 @@ parent: 参考指南
 
 Fourier-GRX user 接口使用 zenoh 进行通信，zenoh 是一个分布式系统的数据共享和协作平台 (https://zenoh.io/)。
 
-针对机器人开发，Fourier-GRX 提供了以下接口 key：
+fourier-grx 接口主要分为以下4类：
 
-- `fourier-grx/dynalink_interface/task/server`
-    - 用于接收任务指令，主要用于获取机器人当前的任务模式
-- `fourier-grx/dynalink_interface/grx/server`
-    - 用于接收 GRX 机器人更细节的状态信息
-- `fourier-grx/dynalink_interface/task/client`
-    - 用于发送任务指令给机器人，主要用于切换不同的任务模式
-- `fourier-grx/dynalink_interface/grx/client`
-    - 用于进行 GRX 机器人不同任务更细节的控制参数设置。
-    - 例如：设置机器人的行走指令参数等。
+- comm：通信相关信息
+- robot：机器人状态信息
+- task：任务相关信息
+- grx：fourier-grx 库相关信息，通用机器人相关内容（主要是人形）
 
-### task/server 接口协议 (用户接收)
+对应的 zenoh 接口 topic 的 key 格式为：
+
+- key 可以是 ["comm", "robot", "task", "grx"]
+- `fourier-grx/dynalink_interface/{key}/server` ：用于发出状态信息
+- `fourier-grx/dynalink_interface/{key}/client` ：用于接收指令信息
+
+### 状态信息
+
+#### comm/server 接口协议 (状态信息)
+
+key 说明列表：
+
+| key               | 说明   | 数据类型 | 具体描述      |
+|-------------------|------|------|-----------|
+| `flag_heart_beat` | 心跳标志 | bool | 1: 机器人已启动 |
+
+#### robot/server 接口协议 (状态信息)
+
+key 说明列表：
+
+| key                             | 说明         | 数据类型                              | 具体描述                                    |
+|---------------------------------|------------|-----------------------------------|-----------------------------------------|
+| `sensor_usb_imus_quat_value`    | 传感器 IMU 数据 | array(float, float, float, float) | 传感器 IMU 数据，四元数表示姿态，顺序为 x, y, z, w       |
+| `sensor_usb_imus_euler_value`   | 传感器 IMU 数据 | array(float, float, float)        | 传感器 IMU 数据，欧拉角表示姿态，顺序为 roll, pitch, yaw |
+| `sensor_usb_imus_ang_vel_value` | 传感器 IMU 数据 | array(float, float, float)        | 传感器 IMU 数据，角速度表示姿态，顺序为 x, y, z          |
+| `sensor_usb_imus_lin_acc_value` | 传感器 IMU 数据 | array(float, float, float)        | 传感器 IMU 数据，线加速度表示姿态，顺序为 x, y, z         |
+| `actuator_measured_position`    | 电机位置       | array(float)                      | 电机测量位置，单位为角度                            |
+| `actuator_measured_velocity`    | 电机速度       | array(float)                      | 电机测量速度，单位为角度/秒                          |
+| `actuator_measured_kinetic`     | 电机力矩       | array(float)                      | 电机测量力矩，单位为牛顿米                           |
+| `actuator_measured_current`     | 电机电流       | array(float)                      | 电机测量电流，单位为安培                            |
+| `actuator_output_position`      | 电机位置       | array(float)                      | 电机指令位置，单位为角度                            |
+| `actuator_output_velocity`      | 电机速度       | array(float)                      | 电机指令速度，单位为角度/秒                          |
+| `actuator_output_kinetic`       | 电机力矩       | array(float)                      | 电机指令力矩，单位为牛顿米                           |
+| `actuator_output_current`       | 电机电流       | array(float)                      | 电机指令电流，单位为安培                            |
+| `joint_measured_position`       | 关节位置       | array(float)                      | 关节测量位置，单位为角度                            |
+| `joint_measured_velocity`       | 关节速度       | array(float)                      | 关节测量速度，单位为角度/秒                          |
+| `joint_measured_kinetic`        | 关节力矩       | array(float)                      | 关节测量力矩，单位为牛顿米                           |
+| `joint_measured_current`        | 关节电流       | array(float)                      | 关节测量电流，单位为安培                            |
+| `joint_output_position`         | 关节位置       | array(float)                      | 关节指���位置，单位为角度                          |
+| `joint_output_velocity`         | 关节速度       | array(float)                      | 关节���令速度，单位为角度/秒                        |
+| `joint_output_kinetic`          | 关节力矩       | array(float)                      | 关节指令力矩，单位为牛顿米                           |
+| `joint_output_current`          | 关节电流       | array(float)                      | 关节���令电流，单位为安培                          |
+
+#### task/server 接口协议 (状态信息)
 
 key 说明列表：
 
@@ -33,7 +71,7 @@ key 说明列表：
 | `robot_task_state`     | 机器人任务状态  | int  | 当前机器人任务状态，如果设置了 task/client 中的 `flag_task_command_update` 为 True，会更新此值，更新值为 `robot_task_command` |
 | `robot_task_substate`  | 机器人任务子状态 | int  |                                                                                                  |
 
-### grx/server 接口协议 (用户接收)
+#### grx/server 接口协议 (状态信息)
 
 key 说明列表：
 
@@ -44,7 +82,25 @@ key 说明列表：
 | `robot_charging_level`     | 机器人电量等级  | int  | 1为低电量红色 2为中等电量黄色 3为较多电量绿色 |
 | `robot_charging_state`     | 机器人充电状态  | int  | 0: 未充电，1: 正在充电            |
 
-### task/client 接口协议 (用户发送)
+### 指令信息
+
+#### comm/client 接口协议 (指令信息)
+
+key 说明列表：
+
+| key | 说明 | 数据类型 | 具体描述 |
+|-----|----|------|------|
+|     |    |      |      |
+
+#### robot/client 接口协议 (指令信息)
+
+key 说明列表：
+
+| key | 说明 | 数据类型 | 具体描述 |
+|-----|----|------|------|
+|     |    |      |      |
+
+#### task/client 接口协议 (指令信息)
 
 key 说明列表：
 
@@ -69,7 +125,7 @@ key 说明列表：
 | TASK_RL_WALK     | 3530 | 机器人运动到 **行走状态**，可以用手柄控制机器人行走    |
 | TASK_RL_WALK_RUN | 3542 | 机器人运动到 **跑步状态**，可以用手柄控制机器人行走/跑步 |
 
-### grx/client 接口协议 (用户发送)
+#### grx/client 接口协议 (指令信息)
 
 key 说明列表：
 
