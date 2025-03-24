@@ -33,9 +33,9 @@ npm start
 
 ## 开发指南
 
-1. [环境配置](/docs/setup)
-2. [API 参考](/docs/api)
-3. [部署指南](/docs/deployment)
+1. [环境配置](/docs/reference)
+2. [API 参考](/docs/quickstart)
+3. [部署指南](/docs/examples)
 
 ## 贡献
 
