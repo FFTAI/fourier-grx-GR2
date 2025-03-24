@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 参考指南 User 接口
+title: User 接口
 nav_order: 3.1
 parent: 参考指南
 ---

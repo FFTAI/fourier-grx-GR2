@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 参考指南 Developer 接口
+title: Developer 接口
 nav_order: 3.2
 parent: 参考指南
 ---
