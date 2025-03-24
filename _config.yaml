@@ -11,3 +11,7 @@ plugins:
 logo: "assets/images/logo.jpeg"         # 图片路径
 logo_alt: "Fourier Intelligence"        # 图片的替代文本（SEO 优化）
 logo_footer: "assets/images/logo.jpeg"  # 页脚 Logo（可选）
+
+# 导航栏配置
+collapse_navigation: false # 启用展开当前活动的父菜单
+nav_exclude: false # 控制菜单展开深度
