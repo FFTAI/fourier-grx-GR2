@@ -1,3 +1,9 @@
+---
+layout: default
+title: 快速开始
+nav_order: 4
+---
+
 # 更新日志
 
 1. 2024-03-24: 
