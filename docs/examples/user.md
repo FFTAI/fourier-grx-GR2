@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 示例代码 User 接口
+title: User 接口
 nav_order: 2.1
 ---
 
