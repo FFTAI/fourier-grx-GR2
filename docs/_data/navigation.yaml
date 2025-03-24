@@ -1,7 +1,10 @@
 docs:
   - title: 快速开始
     url: /docs/quickstart
+    nav_order: 1
   - title: 示例代码
     url: /docs/examples
+    nav_order: 2
   - title: 参考指南
     url: /docs/reference
+    nav_order: 3
