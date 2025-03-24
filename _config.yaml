@@ -1,7 +1,8 @@
 title: 开发文档
 description: 项目开发文档中心
-theme: jekyll-theme-primer  # 适合文档的简洁主题
+remote_theme: pmarsceill/just-the-docs
 plugins:
   - jekyll-relative-links
   - jekyll-default-layout
   - jekyll-readme-index
+  - jekyll-remote-theme
