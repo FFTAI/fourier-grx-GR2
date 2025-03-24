@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 快速开始
-nav_order: 4
+title: 更新日志
+nav_order: 5
 ---
 
 # 更新日志
