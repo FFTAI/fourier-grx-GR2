@@ -6,8 +6,6 @@ nav_order: 3
 
 # 参考指南
 
-[TOC]
-
 ## Fourier-GRX 接口协议 [user 接口]
 
 Fourier-GRX user 接口使用 zenoh 进行通信，zenoh 是一个分布式系统的数据共享和协作平台 (https://zenoh.io/)。

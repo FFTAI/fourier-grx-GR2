@@ -10,8 +10,8 @@ docs:
       - title: 示例代码 user
         url: /docs/examples/user
         nav_order: 1
-      - title: 示例代码 admin
-        url: /docs/examples/admin
+      - title: 示例代码 developer
+        url: /docs/examples/developer
         nav_order: 2
 
   - title: 参考指南
