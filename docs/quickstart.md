@@ -7,6 +7,7 @@ nav_order: 1
 # 快速开始
 
 ## GRMini1 系列机器人
+
 ### 系统开机
 
 当我们拿到机器人后，首先需要将机器人开机。具体可以参见视频：
@@ -47,4 +48,27 @@ fourier-grx start
 
 ![joystick.jpg](/assets/images/joystick.jpg)
 
+### 二次开发环境配置
+
+机器人提供了 `fourier-grx setup_conda` 命令用于一键配置 conda 开发环境。
+
+```bash
+# 在机器人主控电脑上：
+fourier-grx setup_conda
+
+# 程序运行完成后，会搭建出一个名为 `fourier-grx` 的 conda 环境，可以通过以下命令激活该环境
+conda activate fourier-grx
+
+# 如果希望自主搭建开发环境，可以在 $HOME/fourier-grx/whl 中找到依赖库文件进行手动安装。
+```
+
+### 示例程序运行
+
+可以通过 git 同步机器人的二次开发接口示例程序，同步命令为：
+
+```bash
+git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
+```
+
+建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/wiki-grx-mini` 进入该目录查看。
 
