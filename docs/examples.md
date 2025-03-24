@@ -16,6 +16,16 @@ Fourier-GRX SDK 开发接口分为两类：
 - **user** 接口是在启动了 fourier-grx 主程序后，通过 zenoh (https://zenoh.io/) 接口进行通信，发送指令数据并返回状态信息，主要用于用户对机器人进行高层控制。
 - **developer** 接口是直接调用 fourier-grx 底层二次开发接口，可以直接获取到底层的状态信息，用于开发者对机器人进行底层开发。
 
+## 示例程序下载
+
+可以通过 git 同步机器人的二次开发接口示例程序，同步命令为：
+
+```bash
+git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
+```
+
+建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/wiki-grx-mini` 进入该目录查看。
+
 ## user
 
 user 目录下的接口是为了方便用户使用 Fourier-GRX 而设计的接口，
