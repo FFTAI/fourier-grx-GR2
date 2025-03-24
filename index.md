@@ -1,5 +1,42 @@
-# Fourier-GRX SDK
+---
+layout: default
+title: 开发文档中心
+nav_order: 1
+has_children: true
+---
 
-Fourier-GRX SDK 是一个软件开发工具包，提供了一套API用于控制傅利叶智能的通用机器人产品。
-该SDK设计简洁易用，提供高级接口来控制机器人运动并读取传感器数据。SDK支持Python语言。
+# 欢迎来到 {项目名称} 开发文档
 
+{: .no_toc }
+
+<details open markdown="block">
+  <summary>
+    目录
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+## 快速开始
+
+```bash
+npm install
+npm start
+```
+
+## 主要功能
+
+- 功能1说明
+- 功能2说明
+- 功能3说明
+
+## 开发指南
+
+1. [环境配置](/docs/setup)
+2. [API 参考](/docs/api)
+3. [部署指南](/docs/deployment)
+
+## 贡献
+
+请阅读我们的[贡献指南](/CONTRIBUTING.md)
