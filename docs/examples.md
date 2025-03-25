@@ -27,36 +27,34 @@ cd $HOME/Wiki-GRx-Deploy
 
 ### 基础控制示例
 
-| 示例名称 | 说明 | 代码路径 |
-|---------|------|----------|
-| 机器人使能 | 控制机器人关节上电 | `user/demo_servo_on.py` |
-| 机器人失能 | 控制机器人关节下电 | `user/demo_servo_off.py` |
-| 清除故障 | 清除机器人报警状态 | `user/demo_clear_fault.py` |
-| 设置零位 | 设置当前位置为零位 | `user/demo_set_home.py` |
+| 示例名称  | 说明        | 代码路径                       |
+|-------|-----------|----------------------------|
+| 机器人使能 | 控制机器人关节上电 | `user/demo_servo_on.py`    |
+| 机器人失能 | 控制机器人关节下电 | `user/demo_servo_off.py`   |
+| 清除故障  | 清除机器人报警状态 | `user/demo_clear_fault.py` |
+| 设置零位  | 设置当前位置为零位 | `user/demo_set_home.py`    |
 
 ### 运动控制示例
 
-| 示例名称 | 说明 | 代码路径 |
-|---------|------|----------|
-| 关节测试 | 测试各关节运动功能 | `user/demo_test_joint.py` |
+| 示例名称 | 说明          | 代码路径                       |
+|------|-------------|----------------------------|
+| 关节测试 | 测试各关节运动功能   | `user/demo_test_joint.py`  |
 | 准备姿态 | 进入准备状态（微曲膝） | `user/demo_ready_state.py` |
-| 行走控制 | 使用手柄控制机器人行走 | `user/demo_walk.py` |
+| 行走控制 | 使用手柄控制机器人行走 | `user/demo_walk.py`        |
 
 ### 运行用户接口示例
 
 1. 在机器人主控电脑上启动 Fourier-GRX 主程序：
-   
-```bash
-conda activate fourier-grx
-python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{型号}_sdk.yaml
-```
+    ```bash
+    conda activate fourier-grx
+    python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{型号}_sdk.yaml
+    ```
 
 2. 运行示例程序（可在远程电脑上执行）：
-
-```bash
-conda activate fourier-grx
-python $HOME/Wiki-GRx-Deploy/user/demo_{示例名称}.py
-```
+    ```bash
+    conda activate fourier-grx
+    python $HOME/Wiki-GRx-Deploy/user/demo_{示例名称}.py
+    ```
 
 ### 最佳实践
 
@@ -72,19 +70,19 @@ python $HOME/Wiki-GRx-Deploy/user/demo_{示例名称}.py
 
 ### 系统控制示例
 
-| 示例名称 | 说明 | 代码路径 |
-|---------|------|----------|
-| 状态监控 | 打印机器人状态信息 | `developer/demo_print_state.py` |
-| 参数配置 | 设置关节 PID 参数 | `developer/demo_set_pid.py` |
-| 机器人使能 | 控制机器人使能状态 | `developer/demo_servo_on.py` |
-| 零位设置 | 设置机器人零位 | `developer/demo_set_home.py` |
+| 示例名称  | 说明          | 代码路径                            |
+|-------|-------------|---------------------------------|
+| 状态监控  | 打印机器人状态信息   | `developer/demo_print_state.py` |
+| 参数配置  | 设置关节 PID 参数 | `developer/demo_set_pid.py`     |
+| 机器人使能 | 控制机器人使能状态   | `developer/demo_servo_on.py`    |
+| 零位设置  | 设置机器人零位     | `developer/demo_set_home.py`    |
 
 ### 运动控制示例
 
-| 示例名称 | 说明 | 代码路径 |
-|---------|------|----------|
+| 示例名称 | 说明     | 代码路径                            |
+|------|--------|---------------------------------|
 | 准备姿态 | 进入准备状态 | `developer/demo_ready_state.py` |
-| 行走控制 | 手柄控制行走 | `developer/demo_walk.py` |
+| 行走控制 | 手柄控制行走 | `developer/demo_walk.py`        |
 
 ### 运行开发者接口示例
 
