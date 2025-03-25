@@ -10,8 +10,6 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 
 # 参考指南 User 接口
 
-## Fourier-GRX 接口协议 [user 接口]
-
 Fourier-GRX user 接口使用 zenoh 进行通信，zenoh 是一个分布式系统的数据共享和协作平台 (https://zenoh.io/)。
 
 fourier-grx 接口主要分为以下4类：
@@ -27,9 +25,9 @@ fourier-grx 接口主要分为以下4类：
 - `fourier-grx/dynalink_interface/{key}/server` ：用于发出状态信息
 - `fourier-grx/dynalink_interface/{key}/client` ：用于接收指令信息
 
-### 状态信息
+## 状态信息
 
-#### comm/server 接口协议 (状态信息)
+### comm/server 接口协议 (状态信息)
 
 key 说明列表：
 
@@ -37,7 +35,7 @@ key 说明列表：
 |-------------------|------|------|-----------|
 | `flag_heart_beat` | 心跳标志 | bool | 1: 机器人已启动 |
 
-#### robot/server 接口协议 (状态信息)
+### robot/server 接口协议 (状态信息)
 
 key 说明列表：
 
@@ -64,7 +62,7 @@ key 说明列表：
 | `joint_output_kinetic`          | 关节力矩       | array(float)                      | 关节指令力矩，单位为牛顿米                           |
 | `joint_output_current`          | 关节电流       | array(float)                      | 关节���令电流，单位为安培                          |
 
-#### task/server 接口协议 (状态信息)
+### task/server 接口协议 (状态信息)
 
 key 说明列表：
 
@@ -74,7 +72,7 @@ key 说明列表：
 | `robot_task_state`     | 机器人任务状态  | int  | 当前机器人任务状态，如果设置了 task/client 中的 `flag_task_command_update` 为 True，会更新此值，更新值为 `robot_task_command` |
 | `robot_task_substate`  | 机器人任务子状态 | int  |                                                                                                  |
 
-#### grx/server 接口协议 (状态信息)
+### grx/server 接口协议 (状态信息)
 
 key 说明列表：
 
@@ -84,17 +82,9 @@ key 说明列表：
 | `fourier_grx_version`  | GRX库版本 | string | GRX库版本号                 |
 | `robot_error_codes`    | 机器人错误码 | int    | 机器人错误码，0: 无错误，其他: 具体错误码 |
 
-### 指令信息
+## 指令信息
 
-#### comm/client 接口协议 (指令信息)
-
-key 说明列表：
-
-| key | 说明 | 数据类型 | 具体描述 |
-|-----|----|------|------|
-|     |    |      |      |
-
-#### robot/client 接口协议 (指令信息)
+### comm/client 接口协议 (指令信息)
 
 key 说明列表：
 
@@ -102,7 +92,15 @@ key 说明列表：
 |-----|----|------|------|
 |     |    |      |      |
 
-#### task/client 接口协议 (指令信息)
+### robot/client 接口协议 (指令信息)
+
+key 说明列表：
+
+| key | 说明 | 数据类型 | 具体描述 |
+|-----|----|------|------|
+|     |    |      |      |
+
+### task/client 接口协议 (指令信息)
 
 任务指令发送接口如下，发送指令时要求按照以下流程执行：
 
@@ -155,7 +153,7 @@ key 说明列表：
 | =========== | =========================== | ===== | ======= |
 | TASK_RUN    | COMPONENT_NATURAL_WAVE      |       | 自然摆臂    |
 
-#### grx/client 接口协议 (指令信息)
+### grx/client 接口协议 (指令信息)
 
 key 说明列表：
 
