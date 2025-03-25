@@ -114,7 +114,7 @@ python $HOME/Wiki-GRx-Deploy/user/demo_ready_state.py
 # ctrl + c 退出程序
 
 # 启动示例程序，进入行走状态，可以用手柄控制机器人行走
-python $HOME/Wiki-GRx-Deploy/user/demo_rl_walk.py
+python $HOME/Wiki-GRx-Deploy/user/demo_walk.py
 ```
 
 程序启动后，可以通过手柄控制机器人完成相应的任务。
