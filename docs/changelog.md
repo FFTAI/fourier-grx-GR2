@@ -5,7 +5,7 @@ nav_order: 7
 has_toc: true
 ---
 
-{: .no_toc }
+{:toc}
 
 # 更新日志
 
