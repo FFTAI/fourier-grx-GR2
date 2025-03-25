@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 变更日志
-nav_order: 5
+nav_order: 6
 ---
 
 # 变更日志
