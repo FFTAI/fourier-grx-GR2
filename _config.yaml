@@ -26,3 +26,9 @@ defaults:
 aux_links:
   "GitHub 仓库":
     - "//github.com/FFTAI/Wiki-GRx-Deploy"
+
+# 生成 TOC
+markdown: kramdown
+kramdown:
+  auto_ids: true      # 自动为标题生成ID（关键！）
+  toc_levels: 1..3    # 目录包含 h1 到 h3 的标题（可选）
