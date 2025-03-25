@@ -7,12 +7,10 @@ has_toc: true
 
 # 更新日志
 
-本文档记录了 Fourier-GRX SDK 及其文档的所有重要更新。
-
-## 目录
-
 * 自动生成的目录
   {:toc}
+
+本文档记录了 Fourier-GRX SDK 及其文档的所有重要更新。
 
 ## 2025 年 3 月
 
