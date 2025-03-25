@@ -5,6 +5,8 @@ nav_order: 7
 has_toc: true
 ---
 
+{: .no_toc }
+
 # 更新日志
 
 本文档记录了 Fourier-GRX SDK 及其文档的所有重要更新。
