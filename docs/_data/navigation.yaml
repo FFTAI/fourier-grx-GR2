@@ -44,6 +44,6 @@ docs:
     url: /docs/update
     nav_order: 6
 
-  - title: 变更日志
+  - title: 日志更新
     url: /docs/changelog
     nav_order: 7
