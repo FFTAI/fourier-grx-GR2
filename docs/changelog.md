@@ -2,6 +2,7 @@
 layout: default
 title: 更新日志
 nav_order: 7
+has_toc: true
 ---
 
 # 更新日志
