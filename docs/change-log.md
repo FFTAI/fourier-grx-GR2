@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 更新日志
+title: 变更日志
 nav_order: 5
 ---
 
-# 更新日志
+# 变更日志
 
 1. 2024-03-24: 
     - 发布 Fourier-GRX SDK 文档 v1.0.0 版本。
