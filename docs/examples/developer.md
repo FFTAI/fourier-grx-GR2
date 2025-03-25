@@ -26,6 +26,7 @@ Developer 接口目前提供的开发示例有：
 
 ```python
 
+
 import os
 import numpy
 import torch
@@ -189,119 +190,119 @@ def algorithm():
 
     torch_gravity_vector = torch.from_numpy(gravity_vector).float().unsqueeze(0)
     torch_base_project_gravity = torch_quat_rotate_inverse(torch_base_measured_quat, torch_gravity_vector)
-    torch_measured_position_offset_for_policy = torch_joint_measured_position_for_policy
-    - torch_default_joint_position
+    torch_measured_position_offset_for_policy = torch_joint_measured_position_for_policy \
+                                                - torch_default_joint_position
+    torch_action = torch.from_numpy(policy_action).float().unsqueeze(0)
 
+    obs_buf = torch.cat([
+        torch_commands,
+        torch_base_measured_angular_velocity,
+        torch_base_project_gravity,
+        torch_measured_position_offset_for_policy,
+        torch_joint_measured_velocity_for_policy * 0.1,
+        torch_action,
+    ], dim=-1)
 
-torch_action = torch.from_numpy(policy_action).float().unsqueeze(0)
+    obs_len = obs_buf.shape[-1]
+    stack_size = 5
 
-obs_buf = torch.cat([
-    torch_commands,
-    torch_base_measured_angular_velocity,
-    torch_base_project_gravity,
-    torch_measured_position_offset_for_policy,
-    torch_joint_measured_velocity_for_policy * 0.1,
-    torch_action,
-], dim=-1)
+    if obs_buf_stack is None:
+        obs_buf_stack = torch.cat([obs_buf] * stack_size, dim=1).float()
 
-obs_len = obs_buf.shape[-1]
-stack_size = 5
+    obs_buf_stack = torch.cat([
+        obs_buf_stack[:, obs_len:],
+        obs_buf,
+    ], dim=1).float()
 
-if obs_buf_stack is None:
-    obs_buf_stack = torch.cat([obs_buf] * stack_size, dim=1).float()
+    torch_policy_action = policy_model(obs_buf_stack).detach()
 
-obs_buf_stack = torch.cat([
-    obs_buf_stack[:, obs_len:],
-    obs_buf,
-], dim=1).float()
+    torch_policy_action = torch.clip(
+        torch_policy_action,
+        min=torch.from_numpy(action_clip_min).float().unsqueeze(0),
+        max=torch.from_numpy(action_clip_max).float().unsqueeze(0),
+    )
 
-torch_policy_action = policy_model(obs_buf_stack).detach()
+    # 记录上一次的 action
+    policy_action = torch_policy_action.numpy().squeeze(0)
 
-torch_policy_action = torch.clip(
-    torch_policy_action,
-    min=torch.from_numpy(action_clip_min).float().unsqueeze(0),
-    max=torch.from_numpy(action_clip_max).float().unsqueeze(0),
-)
+    torch_joint_target_position_from_policy = torch_policy_action \
+                                              + torch_default_joint_position
 
-# 记录上一次的 action
-policy_action = torch_policy_action.numpy().squeeze(0)
+    joint_target_position_from_policy = torch_joint_target_position_from_policy.numpy().squeeze(0)  # unit : rad
+    joint_target_position_from_policy = numpy.rad2deg(joint_target_position_from_policy)  # unit : deg
 
-torch_joint_target_position_from_policy = torch_policy_action
-+ torch_default_joint_position
+    # --------------------------------------------------
 
-joint_target_position_from_policy = torch_joint_target_position_from_policy.numpy().squeeze(0)  # unit : rad
-joint_target_position_from_policy = numpy.rad2deg(joint_target_position_from_policy)  # unit : deg
+    # 控制参数如不需修改，则只需要发送一次即可
+    joint_target_control_mode = numpy.array([
+        # left leg
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        # right leg
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        # waist
+        fourier_grx.JointControlMode.PD,
+        # left arm
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        # right arm
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+        fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
+    ])
+    joint_target_kp = numpy.array([
+        # left leg
+        180.0, 120.0, 90.0, 120.0, 45.0, 45.0,
+        # right leg
+        180.0, 120.0, 90.0, 120.0, 45.0, 45.0,
+        # waist
+        90.0,
+        # left arm
+        90.0, 45.0, 45.0, 45.0, 45.0,
+        # right arm
+        90.0, 45.0, 45.0, 45.0, 45.0,
+    ])
+    joint_target_kd = numpy.array([
+        # left leg
+        10.0, 10.0, 8.0, 8.0, 2.5, 2.5,
+        # right leg
+        10.0, 10.0, 8.0, 8.0, 2.5, 2.5,
+        # waist
+        8.0,
+        # left arm
+        8.0, 2.5, 2.5, 2.5, 2.5,
+        # right arm
+        8.0, 2.5, 2.5, 2.5, 2.5,
+    ])
+    joint_target_position = numpy.zeros(robot_num_of_joints)
 
-# --------------------------------------------------
+    for i in range(policy_control_num_of_joints):
+        index = policy_control_index_of_joints[i]
+        joint_target_position[index] = joint_target_position_from_policy[i]
 
-# 控制参数如不需修改，则只需要发送一次即可
-joint_target_control_mode = numpy.array([
-    # left leg
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    # right leg
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    # waist
-    fourier_grx.JointControlMode.PD,
-    # left arm
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    # right arm
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-    fourier_grx.JointControlMode.PD, fourier_grx.JointControlMode.PD,
-])
-joint_target_kp = numpy.array([
-    # left leg
-    180.0, 120.0, 90.0, 120.0, 45.0, 45.0,
-    # right leg
-    180.0, 120.0, 90.0, 120.0, 45.0, 45.0,
-    # waist
-    90.0,
-    # left arm
-    90.0, 45.0, 45.0, 45.0, 45.0,
-    # right arm
-    90.0, 45.0, 45.0, 45.0, 45.0,
-])
-joint_target_kd = numpy.array([
-    # left leg
-    10.0, 10.0, 8.0, 8.0, 2.5, 2.5,
-    # right leg
-    10.0, 10.0, 8.0, 8.0, 2.5, 2.5,
-    # waist
-    8.0,
-    # left arm
-    8.0, 2.5, 2.5, 2.5, 2.5,
-    # right arm
-    8.0, 2.5, 2.5, 2.5, 2.5,
-])
-joint_target_position = numpy.zeros(robot_num_of_joints)
+    # --------------------------------------------------
 
-for i in range(policy_control_num_of_joints):
-    index = policy_control_index_of_joints[i]
-    joint_target_position[index] = joint_target_position_from_policy[i]
+    # set control
+    """
+    control:
+    - control_mode
+    - pd_control_kp
+    - pd_control_kd
+    - position: degree
+    """
+    control_dict = {
+        "control_mode": joint_target_control_mode,
+        "pd_control_kp": joint_target_kp,
+        "pd_control_kd": joint_target_kd,
+        "position": joint_target_position,
+    }
 
-# --------------------------------------------------
+    # output control
+    control_system.robot_control_loop_set_control(control_dict=control_dict)
 
-# set control
-"""
-control:
-- control_mode
-- pd_control_kp
-- pd_control_kd
-- position: degree
-"""
-control_dict = {
-    "control_mode": joint_target_control_mode,
-    "pd_control_kp": joint_target_kp,
-    "pd_control_kd": joint_target_kd,
-    "position": joint_target_position,
-}
-
-# output control
-control_system.robot_control_loop_set_control(control_dict=control_dict)
 
 if __name__ == "__main__":
     main()
+
 
 ```
