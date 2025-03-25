@@ -3,12 +3,13 @@ layout: default
 title: Developer 接口
 nav_order: 3.2
 parent: 参考指南
-toc: true          # 启用目录
-toc_min_header: 2  # 最小显示标题层级（如 H2）
-toc_max_header: 3  # 最大显示标题层级（如 H3）
+has_toc: true
 ---
 
 # 参考指南 Developer 接口
+
+* TOC
+{:toc}
 
 developer 接口是针对开发者底层开发提供的二次开发接口。需要在 python 环境中安装 fourier_core 和 fourier_grx 库后，直接使用库函数进行开发调用。
 
