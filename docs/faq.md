@@ -38,6 +38,8 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 ```bash
 sudo systemctl stop rocs-wifi  # 只关闭一次
 sudo systemctl disable rocs-wifi  # 永久关闭
+
+sudo reboot # 重启机器人
 ```
 
 ## 机器人的控制频率是多少？
