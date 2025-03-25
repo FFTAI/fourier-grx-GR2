@@ -9,15 +9,8 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 
 # 示例代码
 
-Fourier-GRX SDK 开发接口分为两类：
-
-- 针对高层应用的接口 **user**
-- 针对底层开发的接口 **developer**
-
-两者的区别在于：
-
-- **user** 接口是在启动了 fourier-grx 主程序后，通过 zenoh (https://zenoh.io/) 接口进行通信，发送指令数据并返回状态信息，主要用于用户对机器人进行高层控制。
-- **developer** 接口是直接调用 fourier-grx 底层二次开发接口，可以直接获取到底层的状态信息，用于开发者对机器人进行底层开发。
+本文档提供了丰富的示例代码，帮助您快速掌握 Fourier-GRX SDK 的使用方法。
+示例代码分为用户接口（User API）和开发者接口（Developer API）两类。
 
 ## 示例程序下载
 
@@ -25,71 +18,84 @@ Fourier-GRX SDK 开发接口分为两类：
 
 ```bash
 git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
+cd $HOME/Wiki-GRx-Deploy
 ```
 
-建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/Wiki-GRx-Deploy` 进入该目录查看。
+## 用户接口示例（User API）
 
-## user
+用户接口通过 [Zenoh](https://zenoh.io/) 协议与机器人通信，适用于高层应用开发。您可以在任何与机器人同一局域网的计算机上运行这些示例。
 
-user 目录下的接口是为了方便用户使用 Fourier-GRX 而设计的接口，
-这些接口更多是对 Fourier-GRX 系列机器人内部已有算法的调用。
+### 基础控制示例
 
-> **说明**：
-> user 接口的开发使用了 zenoh 进行通信，因此可以在任意一台与机器人同一局域网的电脑上进行开发。
+| 示例名称 | 说明 | 代码路径 |
+|---------|------|----------|
+| 机器人使能 | 控制机器人关节上电 | `user/demo_servo_on.py` |
+| 机器人失能 | 控制机器人关节下电 | `user/demo_servo_off.py` |
+| 清除故障 | 清除机器人报警状态 | `user/demo_clear_fault.py` |
+| 设置零位 | 设置当前位置为零位 | `user/demo_set_home.py` |
 
-目前提供的开发示例有：
+### 运动控制示例
 
-- `demo_servo_on`: 机器人全关节上电使能。
-- `demo_servo_off`: 机器人全关节下电失能。
-- `demo_clear_fault`: 清除机器人全关节报警。当机器人出现报警时，可以通过此接口清除报警。
-- `demo_set_home`: 设置机器人全关节零位位置为当前位置，用于标定机器人关节零位。
-- `demo_test_joint`: 机器人关节运动功能测试，用于检测机器人关节是否能够正常运动。
-- `demo_ready_state`: 机器人运行到 **准备状态**，为微曲膝关节的站立姿态。
-- `demo_walk`: 机器人运动到 **行走状态**，可以用手柄控制机器人行走。
+| 示例名称 | 说明 | 代码路径 |
+|---------|------|----------|
+| 关节测试 | 测试各关节运动功能 | `user/demo_test_joint.py` |
+| 准备姿态 | 进入准备状态（微曲膝） | `user/demo_ready_state.py` |
+| 行走控制 | 使用手柄控制机器人行走 | `user/demo_walk.py` |
 
-### 示例程序运行方法
+### 运行用户接口示例
+
+1. 在机器人主控电脑上启动 Fourier-GRX 主程序：
+   
+```bash
+conda activate fourier-grx
+python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{型号}_sdk.yaml
+```
+
+2. 运行示例程序（可在远程电脑上执行）：
 
 ```bash
-# 在机器人主控电脑上
-# 1. 启动 fourier-grx 主程序
-conda activate fourier-grx  # 激活 conda 环境
-python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml  # 启动 fourier-grx 主程序
-
-# 在机器人主控电脑上或与机器人同局域网内的任意一台电脑上
-# 2. 启动 user 接口示例
-conda activate fourier-grx  # 激活 conda 环境
-python $HOME/Wiki-GRx-Deploy/user/demo_{具体示例}.py  # 启动示例
+conda activate fourier-grx
+python $HOME/Wiki-GRx-Deploy/user/demo_{示例名称}.py
 ```
 
-如果是在远程电脑上控制机器人，建议使用 Terminal 开多窗口，方便查看机器人状态信息，确保任务有正确被执行。
-如下图所示：
+### 最佳实践
 
-![example_user_terminal.png](/assets/images/example_user_terminal.png)
+- 建议使用多个终端窗口同时运行和监控程序
+- 远程控制时请确保网络连接稳定
+- 运行示例前请仔细阅读相关安全说明
 
-## developer
+![终端示例](/assets/images/example_user_terminal.png)
 
-developer 目录下的接口是为了方便开发者对 Fourier-GRX 系列机器人进行底层开发而设计的接口，
-这些接口更多是对 Fourier-GRX 系列机器人内部底层硬件的调用。
+## 开发者接口示例（Developer API）
 
-> **说明**：
-> 目前为了保证接口的数据有效性和数据传输的实时性，developer 接口的开发需要在机器人的主控电脑上完成。
-> 因此，建议开发者在对机器人足够熟悉后再使用该接口进行开发。
+开发者接口直接调用底层硬件接口，适用于底层开发。为确保实时性，这些示例必须在机器人主控电脑上运行。
 
-目前提供的开发示例有：
+### 系统控制示例
 
-- `demo_print_state`: 打印机器人状态信息。
-- `demo_servo_on`: 机器人全关节上电使能。
-- `demo_servo_off`: 机器人全关节下电失能。
-- `demo_set_home`: 设置机器人全关节零位位置为当前位置，用于标定机器人关节零位。
-- `demo_set_pid`: 设置机器人关节 PID 参数。
-- `demo_ready_state`: 机器人运行到 **准备状态**，为微曲膝关节的站立姿态。
-- `demo_walk`: 机器人运动到 **行走状态**，可以用手柄控制机器人行走。
+| 示例名称 | 说明 | 代码路径 |
+|---------|------|----------|
+| 状态监控 | 打印机器人状态信息 | `developer/demo_print_state.py` |
+| 参数配置 | 设置关节 PID 参数 | `developer/demo_set_pid.py` |
+| 机器人使能 | 控制机器人使能状态 | `developer/demo_servo_on.py` |
+| 零位设置 | 设置机器人零位 | `developer/demo_set_home.py` |
 
-### 示例程序运行方法
+### 运动控制示例
+
+| 示例名称 | 说明 | 代码路径 |
+|---------|------|----------|
+| 准备姿态 | 进入准备状态 | `developer/demo_ready_state.py` |
+| 行走控制 | 手柄控制行走 | `developer/demo_walk.py` |
+
+### 运行开发者接口示例
 
 ```bash
-# 在机器人主控电脑上
-# 1. 启动 developer 接口示例
-conda activate fourier-grx  # 激活 conda 环境
-python $HOME/Wiki-GRx-Deploy/developer/demo_{具体示例}.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml  # 启动示例
+conda activate fourier-grx
+python $HOME/Wiki-GRx-Deploy/developer/demo_{示例名称}.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{型号}_sdk.yaml
 ```
+
+### 注意事项
+
+1. 开发者接口需要更深入的机器人知识
+2. 建议先熟悉用户接口再使用开发者接口
+3. 请注意备份重要的配置文件
+4. 调试时建议在安全环境下进行
