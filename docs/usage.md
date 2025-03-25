@@ -8,7 +8,7 @@ has_toc: true
 # 常用操作
 
 * TOC
-{:toc}
+  {:toc}
 
 本文档介绍了使用 Fourier-GRX SDK 时的常用操作流程和注意事项。
 
@@ -45,6 +45,7 @@ fourier-grx start
 |-----------|---------------|------|---------|
 | GRMini1T1 | TASK_SET_HOME | 999  | 全关节零位校准 |
 | GRMini1T2 | TASK_SET_HOME | 999  | 全关节零位校准 |
+| GR2T3     | TASK_SET_HOME | 999  | 全关节零位校准 |
 
 2. **校准验证**
     - 成功标志
