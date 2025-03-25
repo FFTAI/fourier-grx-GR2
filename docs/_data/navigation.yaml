@@ -32,14 +32,18 @@ docs:
         url: /docs/reference/developer
         nav_order: 3.2
 
+  - title: 常用操作
+    url: /docs/usage
+    nav_order: 4
+
   - title: 常见问题
     url: /docs/faq
-    nav_order: 4
+    nav_order: 5
 
   - title: 固件更新
     url: /docs/update
-    nav_order: 5
+    nav_order: 6
 
   - title: 变更日志
     url: /docs/changelog
-    nav_order: 6
+    nav_order: 7
