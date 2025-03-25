@@ -83,7 +83,7 @@ conda activate fourier-grx
 当我们安装好 conda 开发环境后，可以通过 git 同步机器人的二次开发接口示例程序。
 
 ```bash
-git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
+git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
 ```
 
 建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/wiki-grx-mini` 进入该目录查看。
@@ -93,13 +93,28 @@ git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
 ```bash
 # 在机器人主控电脑上
 # 1. 启动 fourier-grx 主程序
-conda activate fourier-grx  # 激活 conda 环境
-python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml  # 启动 fourier-grx 主程序
+# 激活 conda 环境
+conda activate fourier-grx
 
+# 启动 fourier-grx 主程序
+python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml
+
+# 当看到提示信息 ”You can start playing with the robot right now.“ 时，表示程序启动成功。
+```
+
+```bash
 # 在机器人主控电脑上或与机器人同局域网内的任意一台电脑上
-# 2. 启动 user 接口示例
-conda activate fourier-grx  # 激活 conda 环境
-python $HOME/wiki-grx-mini/user/demo_{具体示例}.py  # 启动示例
+# 1. 启动 user 接口示例
+# 激活 conda 环境
+conda activate fourier-grx  
+
+# 启动示例程序，进入准备状态，使能全部执行器
+python $HOME/Wiki-GRx-Deploy/user/demo_ready_state.py
+
+# ctrl + c 退出程序
+
+# 启动示例程序，进入行走状态，可以用手柄控制机器人行走
+python $HOME/Wiki-GRx-Deploy/user/demo_rl_walk.py
 ```
 
 程序启动后，可以通过手柄控制机器人完成相应的任务。

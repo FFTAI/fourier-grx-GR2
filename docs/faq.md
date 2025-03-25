@@ -9,9 +9,16 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 
 # 常见问题
 
+## 机器人 initialize 失败，提示找不到 IMU 设备
+
+![initialize_imu_error.png](/assets/images/initialize_imu_error.png)
+
+- 检查 IMU 连接线是否正常连接到机器人主控板。
+
 ## 机器人 self-check 失败，提示无法访问指定 ip 的执行器：
 
-- ![self_check_error.png](/assets/images/self_check_error.png)
+![self_check_error.png](/assets/images/self_check_error.png)
+
 - 检查机器人的执行器是否上电，是否闪烁紫色呼吸灯。
 - 检查机器人的有线网口是否连接到有线网络，并且系统已正确配置为静态 IP 模式。
 - 检查机器人是否存在线路连线问题。

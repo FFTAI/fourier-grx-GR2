@@ -24,10 +24,10 @@ Fourier-GRX SDK 开发接口分为两类：
 可以通过 git 同步机器人的二次开发接口示例程序，同步命令为：
 
 ```bash
-git clone https://gitee.com/FourierIntelligence/wiki-grx-mini
+git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
 ```
 
-建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/wiki-grx-mini` 进入该目录查看。
+建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/Wiki-GRx-Deploy` 进入该目录查看。
 
 ## user
 
@@ -58,7 +58,7 @@ python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/co
 # 在机器人主控电脑上或与机器人同局域网内的任意一台电脑上
 # 2. 启动 user 接口示例
 conda activate fourier-grx  # 激活 conda 环境
-python $HOME/wiki-grx-mini/user/demo_{具体示例}.py  # 启动示例
+python $HOME/Wiki-GRx-Deploy/user/demo_{具体示例}.py  # 启动示例
 ```
 
 如果是在远程电脑上控制机器人，建议使用 Terminal 开多窗口，方便查看机器人状态信息，确保任务有正确被执行。
@@ -91,5 +91,5 @@ developer 目录下的接口是为了方便开发者对 Fourier-GRX 系列机器
 # 在机器人主控电脑上
 # 1. 启动 developer 接口示例
 conda activate fourier-grx  # 激活 conda 环境
-python $HOME/wiki-grx-mini/developer/demo_{具体示例}.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml  # 启动示例
+python $HOME/Wiki-GRx-Deploy/developer/demo_{具体示例}.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{具体机型}_sdk.yaml  # 启动示例
 ```
