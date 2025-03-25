@@ -19,12 +19,10 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 当我们拿到机器人后，首先需要将机器人开机。
 
 1. 接通机器人的电池电源开关。
-
-![power_button.png](/assets/images/power_button.png)
+    ![power_button.png](/assets/images/power_button.png)
 
 2. 确保机器人的急停按钮处于松开状态。
-
-![img.png](/assets/images/emergent_stop_button.png)
+    ![img.png](/assets/images/emergent_stop_button.png)
 
 3. 确认所有关节执行器的指示灯为紫色慢闪状态（正常工作状态）。
 
