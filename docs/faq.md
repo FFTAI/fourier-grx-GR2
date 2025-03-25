@@ -154,5 +154,5 @@ sudo apt install build-essential
 如果您遇到未在此文档中列出的问题：
 
 1. 查看[开发文档](/docs/reference.md)
-2. 检查[更新日志](/docs/changelog.md)
+2. 检查[日志更新](/docs/changelog.md)
 3. 联系技术支持

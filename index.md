@@ -42,9 +42,9 @@ SDK 目前主要支持 Python 语言二次开发使用。
 | Windows          | Python 3.11 |     |      |
 | MacOS            | Python 3.11 |     |      |
 
-## 更新日志
+## 日志更新
 
-请查看 [更新日志](/docs/changelog) 以获取最新版本的更新内容。
+请查看 [日志更新](/docs/changelog) 以获取最新版本的更新内容。
 
 ## 贡献
 
