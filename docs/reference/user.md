@@ -57,10 +57,10 @@ key 说明列表：
 | `joint_measured_velocity`       | 关节速度       | array(float)                      | 关节测量速度，单位为角度/秒                          |
 | `joint_measured_kinetic`        | 关节力矩       | array(float)                      | 关节测量力矩，单位为牛顿米                           |
 | `joint_measured_current`        | 关节电流       | array(float)                      | 关节测量电流，单位为安培                            |
-| `joint_output_position`         | 关节位置       | array(float)                      | 关节指���位置，单位为角度                          |
-| `joint_output_velocity`         | 关节速度       | array(float)                      | 关节���令速度，单位为角度/秒                        |
+| `joint_output_position`         | 关节位置       | array(float)                      | 关节指令位置，单位为角度                            |
+| `joint_output_velocity`         | 关节速度       | array(float)                      | 关节指令速度，单位为角度/秒                          |
 | `joint_output_kinetic`          | 关节力矩       | array(float)                      | 关节指令力矩，单位为牛顿米                           |
-| `joint_output_current`          | 关节电流       | array(float)                      | 关节���令电流，单位为安培                          |
+| `joint_output_current`          | 关节电流       | array(float)                      | 关节指令电流，单位为安培                            |
 
 ### task/server 接口协议 (状态信息)
 
