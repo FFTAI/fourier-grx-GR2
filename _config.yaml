@@ -2,32 +2,56 @@ title: Fourier-GRX SDK
 description: 开发文档
 remote_theme: just-the-docs/just-the-docs
 
+# 主题配置
+theme: just-the-docs
+color_scheme: light
+
+# 插件配置
 plugins:
   - jekyll-relative-links
   - jekyll-remote-theme
+  - jekyll-seo-tag
 
+# Logo 配置
 logo: "assets/images/logo.jpeg"
 logo_alt: "Fourier Intelligence"
 
+# 搜索和导航配置
 search_enabled: true
-collapse_navigation: true
-navigation_fixed: true
-navigation_sticky: true
-navigation_fold: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
 
+# 导航配置
+collapse_navigation: true
+navigation_sticky: true
+scroll_to_top: true
+
+# 默认布局配置
 defaults:
   - scope:
       path: ""
     values:
       layout: "default"
 
-# 可选扩展配置
+# 外部链接配置
 aux_links:
   "GitHub 仓库":
     - "//github.com/FFTAI/Wiki-GRx-Deploy"
+aux_links_new_tab: true
 
-# 生成 TOC
+# Markdown 配置
 markdown: kramdown
 kramdown:
-  auto_ids: true      # 自动为标题生成ID（关键！）
-  toc_levels: 1..3    # 目录包含 h1 到 h3 的标题（可选）
+  auto_ids: true
+  toc_levels: 1..3
+  syntax_highlighter: rouge
+
+# 其他配置
+heading_anchors: true
+back_to_top: true
+back_to_top_text: "返回顶部"
+footer_content: "Copyright &copy; Fourier Intelligence"
