@@ -2,10 +2,6 @@ title: Fourier-GRX SDK
 description: 开发文档
 remote_theme: just-the-docs/just-the-docs
 
-# 主题配置
-theme: just-the-docs
-color_scheme: light
-
 # 插件配置
 plugins:
   - jekyll-relative-links
@@ -27,8 +23,9 @@ search:
 
 # 导航配置
 collapse_navigation: true
+navigation_fixed: true
 navigation_sticky: true
-scroll_to_top: true
+navigation_fold: true
 
 # 默认布局配置
 defaults:
