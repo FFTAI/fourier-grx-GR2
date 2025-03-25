@@ -91,7 +91,7 @@ git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
 然后，我们可以通过以下命令启动示例程序：
 
 ```bash
-# 在机器人主控电脑上
+# 在机器人主控电脑上打开 Terminal
 # 1. 启动 fourier-grx 主程序
 # 激活 conda 环境
 conda activate fourier-grx
@@ -103,7 +103,7 @@ python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/co
 ```
 
 ```bash
-# 在机器人主控电脑上或与机器人同局域网内的任意一台电脑上
+# 在机器人主控电脑上或与机器人同局域网内的任意一台电脑上打开 Terminal
 # 1. 启动 user 接口示例
 # 激活 conda 环境
 conda activate fourier-grx  
