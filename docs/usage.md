@@ -14,7 +14,24 @@ has_toc: true
 
 ## 固件安装和更新
 
-Fourier-GRX SDK 的安装和更新可以参考 [固件更新](/docs/update.md) 页面。
+Fourier-GRX SDK 安装文件请从 [固件更新](/docs/update.md) 下载。
+下载完后，运行下面的指令完成安装过程：
+
+```
+# 安装 fourier-grx-xxx.deb 文件，安装完后系统中会提供 fourier-grx 程序工具
+sudo dpkg -i fourier-grx-xxx.deb  # xxx 为具体版本号
+
+# 安装 fourier-grx 完整内容
+fourier-grx install
+```
+
+安装过程中，会要求输入机器人型号，请根据实际机器人型号进行配置，目前支持的型号如下：
+
+| robot_type 机器人型号 | robot_version 机器人版本 | test_version 测试版本 | 适配的机器人型号    |
+|------------------|---------------------|-------------------|-------------|
+| GRMini1          | T1                  | 否                 | GRMini1T1   |
+| GRMini1          | T2                  | 否                 | GRMini1T2   |
+| GR2              | T3                  | 否                 | GR2T2、GR2T5 |
 
 ## 关节零位校准
 
