@@ -63,7 +63,9 @@ has_toc: true
 
 **问题描述**：机器人初始化成功，但 IMU 数据异常，一直报错
 
-![IMU 数据错误.png](/assets/images/imu_data_error.png)
+![IMU 数据错误 1.png](/assets/images/imu_data_error_quat_zero.png)
+
+![IMU 数据错误 2.png](/assets/images/imu_data_error_error_frame.png)
 
 **解决方案**：
 
