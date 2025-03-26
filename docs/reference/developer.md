@@ -78,6 +78,10 @@ Fourier-GRX SDK 中对于关节序列的定义如下。
 | 21 | right_elbow_pitch_joint    | 右肘 pitch 关节 |
 | 22 | right_wrist_yaw_joint      | 右腕 yaw 关节   |
 
+说明：
+
+- 这里的关节名称对应机器人 urdf 模型文件中的关节名称
+
 #### GR2
 
 | 序号 | 关节名称                       | 具体描述        |
@@ -112,4 +116,7 @@ Fourier-GRX SDK 中对于关节序列的定义如下。
 | 27 | right_wrist_pitch_joint    | 右腕 pitch 关节 |
 | 28 | right_wrist_roll_joint     | 右腕 roll 关节  |
 
+说明：
+
+- 这里的关节名称对应机器人 urdf 模型文件中的关节名称
 
