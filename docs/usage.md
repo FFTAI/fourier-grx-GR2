@@ -109,4 +109,5 @@ fourier-grx enable_service  # 开启程序开机自启动
 fourier-grx disable_service # 关闭程序开机自启动
 ```
 
+如果机器人已经配置为用手柄进行遥控操作。
 开启开机自启动后，请确保机器人手柄在开机前已连接到主控电脑的 USB 端口，并处于唤醒状态。
