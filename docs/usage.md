@@ -8,7 +8,7 @@ has_toc: true
 # 常用操作
 
 * TOC
-  {:toc}
+{:toc}
 
 本文档介绍了使用 Fourier-GRX SDK 时的常用操作流程和注意事项。
 

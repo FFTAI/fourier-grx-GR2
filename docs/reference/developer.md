@@ -9,7 +9,7 @@ has_toc: true
 # 参考指南 Developer 接口
 
 * TOC
-  {:toc}
+{:toc}
 
 developer 接口是针对开发者底层开发提供的二次开发接口。需要在 python 环境中安装 fourier_core 和 fourier_grx 库后，直接使用库函数进行开发调用。
 
