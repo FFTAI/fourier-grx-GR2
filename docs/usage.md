@@ -12,9 +12,9 @@ has_toc: true
 
 本文档介绍了使用 Fourier-GRX SDK 时的常用操作流程和注意事项。
 
-## 安装更新
+## 固件安装和更新
 
-安装新的 SDK 可以参考 [固件更新](/docs/update.md) 页面。
+Fourier-GRX SDK 的安装和更新可以参考 [固件更新](/docs/update.md) 页面。
 
 ## 关节零位校准
 
