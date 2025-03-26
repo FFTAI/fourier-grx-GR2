@@ -25,7 +25,6 @@ User 接口提供的开发示例有：
 该示例代码展示如何通过调用 fourier-grx 内部 RL 行走算法完成机器人运动控制任务。
 
 ```python
-
 import time
 import zenoh
 import msgpack

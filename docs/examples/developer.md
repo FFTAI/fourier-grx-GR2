@@ -25,8 +25,6 @@ Developer 接口目前提供的开发示例有：
 该代码展示如何通过调用 policy.pt 文件来完成机器人的行走运动控制。
 
 ```python
-
-
 import os
 import numpy
 import torch
