@@ -74,7 +74,7 @@ has_toc: true
    - 重新启动 fourier-grx 程序
 3. 检查是否配置了 fourier-grx 开机自启动
    - 终端输入 `crontab -e`，查看是否配置了 fourier-grx 开机自启动
-   - 如果配置了，注释掉相关配置，保存退出
+   - 如果配置了，可终端运行 `fourier-grx disable_service` 关闭开机自启动
    - 重启机器人控制电脑 💻
 
 ## 网络配置
