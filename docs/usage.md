@@ -100,3 +100,13 @@ fourier-grx start
     - 多次失败请联系技术支持
     - 记录错误信息以便分析
 
+## 程序开机自启动
+
+fourier-grx 提供了程序开机自启动的配置功能，可以通过以下指令进行配置：
+
+```bash
+fourier-grx enable_service  # 开启程序开机自启动
+fourier-grx disable_service # 关闭程序开机自启动
+```
+
+开启开机自启动后，请确保机器人手柄在开机前已连接到主控电脑的 USB 端口，并处于唤醒状态。
