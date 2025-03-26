@@ -17,15 +17,15 @@ developer 接口是针对开发者底层开发提供的二次开发接口。需�
 
 Fourier-GRX developer 接口使用状态字典（state dict）返回机器人当前的状态信息，状态字典的 key 和 value 如下：
 
-| key                    | 说明               | 数据类型                                    |
-|------------------------|------------------|-----------------------------------------|
-| `imu_quat`             | 机器人 IMU 的四元数姿态信息 | array(float,float,float,float), 次序 xyzw |
-| `imu_euler_angle`      | 机器人 IMU 的欧拉角姿态信息 | array(float, float, float), 次序 rpy      |
-| `imu_angular_velocity` | 机器人 IMU 的角速度信息   | array(float, float, float), 次序 rpy      |
-| `imu_acceleration`     | 机器人 IMU 的线加速度信息  | array(float, float, float), 次序 xyz      |
-| `joint_position`       | 机器人关节的位置信息       | array(float * num_of_joints)            |
-| `joint_velocity`       | 机器人关节的速度信息       | array(float * num_of_joints)            |
-| `joint_kinetic`        | 机器人关节的力矩信息       | array(float * num_of_joints)            |
+| key                    | 说明               | 数据类型                           | 具体描述    |
+|------------------------|------------------|--------------------------------|---------|
+| `imu_quat`             | 机器人 IMU 的四元数姿态信息 | array(float,float,float,float) | 次序 xyzw |
+| `imu_euler_angle`      | 机器人 IMU 的欧拉角姿态信息 | array(float, float, float)     | 次序 rpy  |
+| `imu_angular_velocity` | 机器人 IMU 的角速度信息   | array(float, float, float)     | 次序 rpy  |
+| `imu_acceleration`     | 机器人 IMU 的线加速度信息  | array(float, float, float)     | 次序 xyz  |
+| `joint_position`       | 机器人关节的位置信息       | array(float * num_of_joints)   |         |
+| `joint_velocity`       | 机器人关节的速度信息       | array(float * num_of_joints)   |         |
+| `joint_kinetic`        | 机器人关节的力矩信息       | array(float * num_of_joints)   |         |
 
 ## 控制字典（control dict）
 
