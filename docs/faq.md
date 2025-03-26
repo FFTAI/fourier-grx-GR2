@@ -59,6 +59,24 @@ has_toc: true
 2. 确认有线网络连接和静态 IP 配置
 3. 检查线路连接完整性
 
+### IMU 数据异常
+
+**问题描述**：机器人初始化成功，但 IMU 数据异常，一直报错
+
+![IMU 数据错误.png](/assets/images/imu_data_error.png)
+
+**解决方案**：
+
+1. 检查 IMU 连接线是否正确连接到机器人主控板
+2. 检查是否 fourier-grx 程序重复启动 （重复启动，会竞争设备权属，导致数据出错）
+   - 终端输入 `ps -ef | grep fourier-grx` 查看是否有多个 fourier-grx 进程
+   - 杀死已启动的 fourier-grx 程序：`sudo killall fourier-grx`
+   - 重新启动 fourier-grx 程序
+3. 检查是否配置了 fourier-grx 开机自启动
+   - 终端输入 `crontab -e`，查看是否配置了 fourier-grx 开机自启动
+   - 如果配置了，注释掉相关配置，保存退出
+   - 重启机器人控制电脑 💻
+
 ## 网络配置
 
 ### 外网访问配置
