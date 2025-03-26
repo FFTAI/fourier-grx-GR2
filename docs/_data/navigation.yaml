@@ -34,6 +34,9 @@ docs:
       - title: Developer 接口
         url: /docs/reference/developer
         nav_order: 3.2
+      - title: 机器人关节序列
+        url: /docs/reference/joint_sequence
+        nav_order: 3.3
 
   - title: 常用操作
     url: /docs/usage
