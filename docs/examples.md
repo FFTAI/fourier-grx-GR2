@@ -20,6 +20,7 @@ GRMini1 系列机器人的示例代码位于 [Github Wiki-GRx-Deploy](https://gi
 可以通过 git 同步机器人的二次开发接口示例程序，同步命令为：
 
 ```bash
+# 在机器人主控电脑 $HOME 目录下执行
 git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
 cd $HOME/Wiki-GRx-Deploy
 ```
