@@ -25,6 +25,20 @@ git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
 cd $HOME/Wiki-GRx-Deploy
 ```
 
+## 二次开发环境配置
+
+`fourier-grx` 工具提供了 `fourier-grx setup_conda` 命令用于一键配置 conda 开发环境用于机器人二次开发。
+
+```bash
+# 在机器人主控电脑上：
+fourier-grx setup_conda
+
+# 程序运行完成后，会搭建出一个名为 `fourier-grx` 的 conda 环境，可以通过以下命令激活该环境
+conda activate fourier-grx
+
+# 如果希望自主搭建开发环境，可以在 $HOME/fourier-grx/whl 中找到依赖库文件进行手动安装。
+```
+
 ## 用户接口示例（User API）
 
 用户接口通过 [Zenoh](https://zenoh.io/) 协议与机器人通信，适用于高层应用开发。您可以在任何与机器人同一局域网的计算机上运行这些示例。
