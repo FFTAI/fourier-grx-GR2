@@ -87,7 +87,7 @@ conda activate fourier-grx
 git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
 ```
 
-建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/wiki-grx-mini` 进入该目录查看。
+建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/Wiki-GRx-Deploy` 进入该目录查看。
 
 然后，我们可以通过以下命令启动示例程序：
 
