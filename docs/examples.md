@@ -75,13 +75,19 @@ conda activate fourier-grx
 
 1. 在机器人主控电脑上启动 Fourier-GRX 主程序：
     ```bash
+    # 激活 conda 环境
     conda activate fourier-grx
-    python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{型号}_sdk.yaml
+   
+    # 运行具体机型的示例程序，配置文件需要根据具体机型进行修改，使用带 "_sdk.yaml" 后缀的配置文件
+    python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/{具体机型}/config_{具体机型}_sdk.yaml
     ```
 
 2. 运行示例程序（可在远程电脑上执行）：
     ```bash
+    # 激活 conda 环境
     conda activate fourier-grx
+   
+    # 运行具体机型的示例程序
     python $HOME/Wiki-GRx-Deploy/user/demo_{示例名称}.py
     ```
 
@@ -116,8 +122,11 @@ conda activate fourier-grx
 ### 运行开发者接口示例
 
 ```bash
+# 激活 conda 环境
 conda activate fourier-grx
-python $HOME/Wiki-GRx-Deploy/developer/demo_{示例名称}.py --config=$HOME/fourier-grx/config/grmini1/config_GRMini1_{型号}_sdk.yaml
+
+# 运行具体机型的示例程序，配置文件需要根据具体机型进行修改，使用带 "_sdk.yaml" 后缀的配置文件
+python $HOME/Wiki-GRx-Deploy/developer/demo_{示例名称}.py --config=$HOME/fourier-grx/config/{具体机型}/config_{具体机型}_sdk.yaml
 ```
 
 ### 注意事项
