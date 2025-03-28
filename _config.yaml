@@ -9,7 +9,7 @@ plugins:
   - jekyll-seo-tag
 
 # Logo 配置
-logo: "assets/images/fourier_logo.png"
+logo: "/assets/images/fourier_logo.png"
 logo_alt: "Fourier Intelligence"
 
 # 搜索和导航配置
