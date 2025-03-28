@@ -158,7 +158,6 @@ GRMini1 机器人模块指令列表：
 | TASK_WALK        | COMPONENT_RAISE_RIGHT_BOXING | 3408  | 右手握拳    |
 | TASK_WALK        | COMPONENT_RAISE_RIGHT_HAND   | 3409  | 右手举起    |
 | TASK_WALK        | COMPONENT_SPREAD_HAND        | 3410  | 双手张开    |
-| ================ | ===========================  | ===== | ======= |
 | TASK_RUN         | COMPONENT_NATURAL_WAVE       | 3407  | 自然摆臂    |
 | TASK_RUN         | COMPONENT_WAVE_LEFT_HAND     | 2412  | 左手打招呼   |
 | TASK_RUN         | COMPONENT_WAVE_RIGHT_HAND    | 2411  | 右手打招呼   |
@@ -176,7 +175,6 @@ GR2 机器人模块指令列表：
 | TASK_WALK        | COMPONENT_RAISE_RIGHT_BOXING | 2406  | 右手握拳    |
 | TASK_WALK        | COMPONENT_RAISE_RIGHT_HAND   | 2407  | 右手举起    |
 | TASK_WALK        | COMPONENT_SPREAD_HAND        | 2408  | 双手张开    |
-| ================ | ===========================  | ===== | ======= |
 | TASK_MOTION_BANK | COMPONENT_NATURAL_WAVE       | 2403  | 自然摆臂    |
 | TASK_MOTION_BANK | COMPONENT_MOTION_BANK        | 2499  | 动作集合    |
 
