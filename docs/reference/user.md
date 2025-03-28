@@ -9,7 +9,7 @@ has_toc: true
 # 参考指南 User 接口
 
 * TOC
-{:toc}
+  {:toc}
 
 Fourier-GRX user 接口使用 zenoh 进行通信，zenoh 是一个分布式系统的数据共享和协作平台 (https://zenoh.io/)。
 
@@ -138,6 +138,7 @@ key 说明列表：
 | TASK_READY_STATE | 960 | All                  | 机器人运行到 **准备状态**，为微曲膝关节的站立姿态     |
 | TASK_WALK        | 965 | All                  | 机器人运动到 **行走状态**，可以用手柄控制机器人行走    |
 | TASK_RUN         | 966 | GRMini1T1, GRMini1T2 | 机器人运动到 **跑步状态**，可以用手柄控制机器人行走/跑步 |
+| TASK_MOTION_BANK | 967 | GR2                  | 机器人 **动作集合**                    |
 
 机器人模块指令列表：
 
@@ -145,14 +146,39 @@ key 说明列表：
 - 相互互斥的几个模块其中一个被调用时，另一个在程序中自动被 挂起。（由控制程序自动管理）
 - 相互组合的模块，对方的调用和切换不会互相影响。
 - 模块的运行管理全在控制程序中完成，上层无需关心模块的吊起切换过程是否有风险。
+- 模块值跟机型绑定关系密切，因此，可能随版本变动，如果发现模块任务未正常执行，建议及时更新到最新固件并参考最新文档内容。
 
-| 任务指令        | 模块指令                        | 模块值   | 模块描述    |
-|-------------|-----------------------------|-------|---------|
-| TASK_WALK   | COMPONENT_NATURAL_WAVE      |       | 自然摆臂    |
-| TASK_WALK   | COMPONENT_WAVE_LEFT_HAND    |       | 左手打招呼   |
-| TASK_WALK   | COMPONENT_WAVE_RIGHT_HAND   |       | 右手打招呼   |
-| =========== | =========================== | ===== | ======= |
-| TASK_RUN    | COMPONENT_NATURAL_WAVE      |       | 自然摆臂    |
+GRMini1 机器人模块指令列表：
+
+| 任务指令             | 模块指令                         | 模块值   | 模块描述    |
+|------------------|------------------------------|-------|---------|
+| TASK_WALK        | COMPONENT_NATURAL_WAVE       | 3407  | 自然摆臂    |
+| TASK_WALK        | COMPONENT_WAVE_LEFT_HAND     | 2412  | 左手打招呼   |
+| TASK_WALK        | COMPONENT_WAVE_RIGHT_HAND    | 2411  | 右手打招呼   |
+| TASK_WALK        | COMPONENT_RAISE_RIGHT_BOXING | 3408  | 右手握拳    |
+| TASK_WALK        | COMPONENT_RAISE_RIGHT_HAND   | 3409  | 右手举起    |
+| TASK_WALK        | COMPONENT_SPREAD_HAND        | 3410  | 双手张开    |
+| ================ | ===========================  | ===== | ======= |
+| TASK_RUN         | COMPONENT_NATURAL_WAVE       | 3407  | 自然摆臂    |
+| TASK_RUN         | COMPONENT_WAVE_LEFT_HAND     | 2412  | 左手打招呼   |
+| TASK_RUN         | COMPONENT_WAVE_RIGHT_HAND    | 2411  | 右手打招呼   |
+| TASK_RUN         | COMPONENT_RAISE_RIGHT_BOXING | 3408  | 右手握拳    |
+| TASK_RUN         | COMPONENT_RAISE_RIGHT_HAND   | 3409  | 右手举起    |
+| TASK_RUN         | COMPONENT_SPREAD_HAND        | 3410  | 双手张开    |
+
+GR2 机器人模块指令列表：
+
+| 任务指令             | 模块指令                         | 模块值   | 模块描述    |
+|------------------|------------------------------|-------|---------|
+| TASK_WALK        | COMPONENT_NATURAL_WAVE       | 2403  | 自然摆臂    |
+| TASK_WALK        | COMPONENT_WAVE_LEFT_HAND     | 2402  | 左手打招呼   |
+| TASK_WALK        | COMPONENT_WAVE_RIGHT_HAND    | 2405  | 右手打招呼   |
+| TASK_WALK        | COMPONENT_RAISE_RIGHT_BOXING | 2406  | 右手握拳    |
+| TASK_WALK        | COMPONENT_RAISE_RIGHT_HAND   | 2407  | 右手举起    |
+| TASK_WALK        | COMPONENT_SPREAD_HAND        | 2408  | 双手张开    |
+| ================ | ===========================  | ===== | ======= |
+| TASK_MOTION_BANK | COMPONENT_NATURAL_WAVE       | 2403  | 自然摆臂    |
+| TASK_MOTION_BANK | COMPONENT_MOTION_BANK        | 2499  | 动作集合    |
 
 ### grx/client 接口协议 (指令信息)
 
