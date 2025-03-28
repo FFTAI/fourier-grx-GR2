@@ -217,4 +217,4 @@ sudo apt install build-essential
 
 1. 查看[开发文档](/docs/reference.md)
 2. 检查[日志更新](/docs/changelog.md)
-3. 联系技术支持
+3. 联系公司技术支持：[xin.chen@fftai.com](mailto:xin.chen@fftai.com)
