@@ -62,3 +62,17 @@ fourier-grx start
 程序启动完成后，即可使用手柄控制机器人完成相应的任务。（图片为 XBOX 键位手柄，具体按键功能对应关系与所用手柄种类相关）
 
 ![joystick.jpg](/assets/images/joystick.jpg)
+
+## 二次开发环境配置
+
+除了启动控制程序的功能，`fourier-grx` 工具还提供了 `fourier-grx setup_conda` 命令用于一键配置 conda 开发环境用于机器人二次开发。
+
+```bash
+# 在机器人主控电脑上：
+fourier-grx setup_conda
+
+# 程序运行完成后，会搭建出一个名为 `fourier-grx` 的 conda 环境，可以通过以下命令激活该环境
+conda activate fourier-grx
+
+# 如果希望自主搭建开发环境，可以在 $HOME/fourier-grx/whl 中找到依赖库文件进行手动安装。
+```
