@@ -44,3 +44,7 @@ heading_anchors: true
 back_to_top: true
 back_to_top_text: "返回顶部"
 footer_content: "Copyright &copy; Fourier Intelligence"
+
+# 隐藏页面
+nav_exclude:
+  - "test.md"
