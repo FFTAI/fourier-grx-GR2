@@ -82,7 +82,7 @@ conda activate fourier-grx
 当我们安装好 conda 开发环境后，可以通过 git 同步机器人的二次开发接口示例程序。
 
 ```bash
-git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=gr2
+git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr2
 ```
 
 建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/Wiki-GRx-Deploy` 进入该目录查看。

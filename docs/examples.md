@@ -25,7 +25,7 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 
 ```bash
 # 在机器人主控电脑 $HOME 目录下执行
-git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=mini
+git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=mini
 cd $HOME/Wiki-GRx-Deploy
 ```
 
@@ -33,9 +33,18 @@ cd $HOME/Wiki-GRx-Deploy
 
 ```bash
 # 在机器人主控电脑 $HOME 目录下执行
-git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=gr2
+git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr2
 cd $HOME/Wiki-GRx-Deploy
 ```
+
+### GR1 系列机器人
+
+```bash
+# 在机器人主控电脑 $HOME 目录下执行
+git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr1
+cd $HOME/Wiki-GRx-Deploy
+```
+
 
 ## 二次开发环境配置
 
