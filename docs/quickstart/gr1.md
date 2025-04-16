@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GR1T2 机器人
+title: GR1 机器人
 nav_order: 1.3
 parent: 快速开始
 toc: true          # 启用目录
