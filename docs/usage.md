@@ -145,7 +145,6 @@ fourier-grx start
 | 设置零位       | 999  | 否            | 全关节零位校准任务      |                    |
 | 准备姿态       | 960  | 否            | 准备姿态任务         | A<br/>(XBOX 键位)    |
 | 行走功能       | 965  | 是、包含多个上肢固定动作 | 站立、行走自然切换任务    | Y<br/>(XBOX 键位)    |
-| 跑步功能       | 966  | 是、包含多个上肢固定动作 | 站立、行走、跑步自然切换任务 | B<br/>(XBOX 键位)    |
 
 ### 开发者模式
 
@@ -194,7 +193,7 @@ fourier-grx 提供了数据日志记录功能，但是默认情况下是关闭�
 如果需要启用数据日志记录功能，需要对 **配置文件** 进行手动修改，具体修改步骤如下：
 
 1. 创建机器人的启动配置文件：
-    - 打开文件夹 `~/fourier-grx/config/n1` 文件夹，找到当前使用的配置文件，比如 `config_GR2__debug.yaml`。
+    - 打开文件夹 `~/fourier-grx/config/gr2` 文件夹，找到当前使用的配置文件，比如 `config_GR2__debug.yaml`。
     - 将该文件复制一份，命名为 `config_GR2__record.yaml`。
 
 2. 修改配置文件：
@@ -205,7 +204,7 @@ fourier-grx 提供了数据日志记录功能，但是默认情况下是关闭�
    ```yaml
    record:
       enable: true
-      path: "~/fourier-grx/record/n1"
+      path: "~/fourier-grx/record/gr2"
    ```
 
 3. 修改启动脚本：
