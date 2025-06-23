@@ -2,18 +2,17 @@
 layout: default
 title: 示例代码
 nav_order: 2
-toc: true          # 启用目录
-toc_min_header: 2  # 最小显示标题层级（如 H2）
-toc_max_header: 3  # 最大显示标题层级（如 H3）
+has_toc: true
 ---
 
 # 示例代码
 
-本文档提供了丰富的示例代码，帮助您快速掌握 Fourier-GRX SDK 的使用方法。
+* TOC
+{:toc}
 
-- GRMini1 系列机器人的示例代码位于 [Gitlab wiki-grx-deploy](http://192.168.3.14:8990/mini/wiki-grx-deploy) 的 `mini` 分支中。
-- GR2 系列机器人的示例代码位于 [Gitlab wiki-grx-deploy](http://192.168.3.14:8990/mini/wiki-grx-deploy) 的 `gr2` 分支中。
-- GR1 系列机器人的示例代码位于 [Gitlab wiki-grx-deploy](http://192.168.3.14:8990/mini/wiki-grx-deploy) 的 `gr1` 分支中。
+本文档提供了丰富的示例代码，帮助您快速掌握 Fourier-GRX-GR2 SDK 的使用方法。
+
+- GR2 系列机器人的示例代码位于 [Github Wiki-GRx-Deploy](https://github.com/FFTAI/Wiki-GRx-Deploy.git) 的 `FourierGR2` 分支中。
 
 示例代码包含用户接口（User API）和开发者接口（Developer API）两类。
 
@@ -21,30 +20,13 @@ toc_max_header: 3  # 最大显示标题层级（如 H3）
 
 可以通过 git 同步机器人的二次开发接口示例程序，同步命令为：
 
-### GRMini1 系列机器人
-
-```bash
-# 在机器人主控电脑 $HOME 目录下执行
-git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=mini
-cd $HOME/Wiki-GRx-Deploy
-```
-
 ### GR2 系列机器人
 
 ```bash
 # 在机器人主控电脑 $HOME 目录下执行
-git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr2
+git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=FourierGR2
 cd $HOME/Wiki-GRx-Deploy
 ```
-
-### GR1 系列机器人
-
-```bash
-# 在机器人主控电脑 $HOME 目录下执行
-git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr1
-cd $HOME/Wiki-GRx-Deploy
-```
-
 
 ## 二次开发环境配置
 
@@ -59,6 +41,8 @@ conda activate fourier-grx
 
 # 如果希望自主搭建开发环境，可以在 $HOME/fourier-grx/whl 中找到依赖库文件进行手动安装。
 ```
+
+---
 
 ## 用户接口示例（User API）
 
@@ -81,7 +65,7 @@ conda activate fourier-grx
 | 准备姿态 | 进入准备状态（微曲膝） | `user/demo_ready_state.py` |
 | 行走控制 | 使用手柄控制机器人行走 | `user/demo_walk.py`        |
 
-### 运行用户接口示例
+### 运行方法
 
 1. 在机器人主控电脑上启动 Fourier-GRX 主程序：
     ```bash
@@ -107,7 +91,9 @@ conda activate fourier-grx
 - 远程控制时请确保网络连接稳定
 - 运行示例前请仔细阅读相关安全说明
 
-![终端示例](/assets/images/example_user_terminal.png)
+![终端示例](/fourier-grx-GR2/assets/images/example_user_terminal.png)
+
+---
 
 ## 开发者接口示例（Developer API）
 
@@ -129,7 +115,7 @@ conda activate fourier-grx
 | 准备姿态 | 进入准备状态 | `developer/demo_ready_state.py` |
 | 行走控制 | 手柄控制行走 | `developer/demo_walk.py`        |
 
-### 运行开发者接口示例
+### 运行方法
 
 ```bash
 # 激活 conda 环境

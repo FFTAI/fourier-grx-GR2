@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 日志更新
-nav_order: 7
+nav_order: 8
 has_toc: true
 ---
 
@@ -9,7 +9,7 @@ has_toc: true
 
 {:toc}
 
-本文档记录了 Fourier-GRX SDK 及其文档的所有重要更新。
+本文档记录了 Fourier-GRX-GR2 SDK 及其文档的所有重要更新。
 
 ## 2025 年 3 月
 
@@ -25,8 +25,8 @@ has_toc: true
 
 **重要里程碑**
 
-- 🎉 发布 Fourier-GRX SDK 文档第一个正式版本
-- 💡 支持 GRMini1 系列机器人开发
+- 🎉 发布 Fourier-GRX-GR2 SDK 文档第一个正式版本
+- 💡 支持 GR2 系列机器人开发
 - 📖 完整的 API 文档和使用指南
 
 **功能特性**
@@ -38,11 +38,5 @@ has_toc: true
 
 **说明**
 
-- 目前主要支持 GRMini1 系列机器人
+- 目前主要支持 GR2 系列机器人
 - 其他机型支持将陆续添加
-
-## 反馈与建议
-
-我们重视您的反馈，如果您有任何建议或发现问题，请：
-
-1. 在 [GitHub Issues](https://github.com/FFTAI/Wiki-GRx-Deploy/issues) 提交问题

@@ -1,14 +1,15 @@
 ---
 layout: default
 title: GR2 机器人
-nav_order: 1.2
+nav_order: 1.1
 parent: 快速开始
-toc: true          # 启用目录
-toc_min_header: 2  # 最小显示标题层级（如 H2）
-toc_max_header: 3  # 最大显示标题层级（如 H3）
+has_toc: true
 ---
 
 # GR2 机器人
+
+* TOC
+{:toc}
 
 ## 视频教程
 
@@ -82,7 +83,7 @@ conda activate fourier-grx
 当我们安装好 conda 开发环境后，可以通过 git 同步机器人的二次开发接口示例程序。
 
 ```bash
-git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr2
+git clone https://github.com/FFTAI/Wiki-GRx-Deploy.git --branch=FourierGR2
 ```
 
 建议同步到 `$HOME` 目录下，同步完成后，可以通过 `cd $HOME/Wiki-GRx-Deploy` 进入该目录查看。
@@ -96,7 +97,7 @@ git clone http://192.168.3.14:8990/mini/wiki-grx-deploy --branch=gr2
 conda activate fourier-grx
 
 # 启动 fourier-grx 主程序
-python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/grmini1/config_GR2_{具体机型}_sdk.yaml
+python $HOME/fourier-grx/whl/run.py --config=$HOME/fourier-grx/config/FourierGR2/config_GR2__sdk.yaml
 
 # 当看到提示信息 ”You can start playing with the robot right now.“ 时，表示程序启动成功。
 ```
@@ -118,4 +119,4 @@ python $HOME/Wiki-GRx-Deploy/user/demo_walk.py
 
 程序启动后，可以通过手柄控制机器人完成相应的任务。
 
-至此，我们已经完成了机器人的快速开始。接下来，我们可以通过 [示例代码](/docs/examples) 来了解更多的机器人各项功能。🎆🎆🎆
+至此，我们已经完成了机器人的快速开始。接下来，我们可以通过 [示例代码](/fourier-grx-GR2/docs/examples) 来了解更多的机器人各项功能。🎆🎆🎆

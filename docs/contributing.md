@@ -5,4 +5,6 @@ title: 贡献指南
 
 # 贡献指南
 
-感谢 Fourier-GRX SDK 社区的贡献者们！🎉
+如有发现文档中的问题，欢迎给我们[文档仓库](https://github.com/FFTAI/fourier-grx-GR2)提 issue 以及改进的 pull-request，我们会尽快处理。
+
+感谢 Fourier-GRX-GR2 SDK 社区的贡献者们！🎉

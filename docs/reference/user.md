@@ -123,7 +123,7 @@ key 说明列表：
 | `robot_component_command`       | 模块指令       | int  | 机器人模块指令，具体指令见下表 |
 | `robot_component_command_data`  | 模块指令数据     | dict | 机器人模块指令数据       |
 
-机器人任务指令列表：
+机器人任务指令列表 🚩：
 
 - 任务指令通过 fourier_grx.TaskCommand 枚举类定义，具体定义如下：
 - 具体任务值可能会根据机器人的不同，或 `fourier-grx` 版本的不同而有所变化，具体值以实际为准。
@@ -140,6 +140,15 @@ key 说明列表：
 | TASK_RUN         | 966 | GRMini1T1, GRMini1T2 | 机器人运动到 **跑步状态**，可以用手柄控制机器人行走/跑步 |
 | TASK_MOTION_BANK | 967 | GR2                  | 机器人 **动作集合**                    |
 
+- All：表示所有傅利叶智能生产机型
+- GR2：表示傅利叶 GR2 系列机型
+
+> ℹ️ **说明**：
+>
+> 表格中未列出功能，在使用手柄进行机器人控制，选择任务时可能会查看到，但其可能仍处于开发中，或部份已废弃使用。
+> 因此，建议开发者在使用手柄进行机器人操作时，谨慎选择任务执行，推荐只尝试调用上述表格中已列出功能清单。
+
+
 机器人模块指令列表：
 
 - 模块任务可以理解为任务下面的子任务模块，但是由于子任务之间可能存在 互斥、组合 的关系，因此，我们并不称其为子任务，而是以模块的形式进行管理。
@@ -147,23 +156,6 @@ key 说明列表：
 - 相互组合的模块，对方的调用和切换不会互相影响。
 - 模块的运行管理全在控制程序中完成，上层无需关心模块的吊起切换过程是否有风险。
 - 模块值跟机型绑定关系密切，因此，可能随版本变动，如果发现模块任务未正常执行，建议及时更新到最新固件并参考最新文档内容。
-
-GRMini1 机器人模块指令列表：
-
-| 任务指令             | 模块指令                         | 模块值   | 模块描述    |
-|------------------|------------------------------|-------|---------|
-| TASK_WALK        | COMPONENT_NATURAL_WAVE       | 3407  | 自然摆臂    |
-| TASK_WALK        | COMPONENT_WAVE_LEFT_HAND     | 2412  | 左手打招呼   |
-| TASK_WALK        | COMPONENT_WAVE_RIGHT_HAND    | 2411  | 右手打招呼   |
-| TASK_WALK        | COMPONENT_RAISE_RIGHT_BOXING | 3408  | 右手握拳    |
-| TASK_WALK        | COMPONENT_RAISE_RIGHT_HAND   | 3409  | 右手举起    |
-| TASK_WALK        | COMPONENT_SPREAD_HAND        | 3410  | 双手张开    |
-| TASK_RUN         | COMPONENT_NATURAL_WAVE       | 3407  | 自然摆臂    |
-| TASK_RUN         | COMPONENT_WAVE_LEFT_HAND     | 2412  | 左手打招呼   |
-| TASK_RUN         | COMPONENT_WAVE_RIGHT_HAND    | 2411  | 右手打招呼   |
-| TASK_RUN         | COMPONENT_RAISE_RIGHT_BOXING | 3408  | 右手握拳    |
-| TASK_RUN         | COMPONENT_RAISE_RIGHT_HAND   | 3409  | 右手举起    |
-| TASK_RUN         | COMPONENT_SPREAD_HAND        | 3410  | 双手张开    |
 
 GR2 机器人模块指令列表：
 
